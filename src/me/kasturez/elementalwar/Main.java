@@ -41,7 +41,7 @@ public class Main extends JavaPlugin {
             }
             Player player = (Player) sender;
             if (args.length == 0) {
-                sender.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "ZOOOOOOOOM!");
+                sender.sendMessage(ChatColor.BLACK + "" + ChatColor.BOLD + "ZOOOOOOOOM!");
                 player.setVelocity(player.getLocation().getDirection().multiply(2).setY(2));
                 return true;
             }
