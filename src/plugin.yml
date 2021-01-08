@@ -2,3 +2,11 @@ name: elementalwar
 version: 1
 author: kasturez
 main: me.kasturez.elementalwar.Main
+
+commands:
+  hello:
+    description: just to say hello
+    usage: just type /hello xD
+  launch:
+    description: launching you, making you go ZOOOM!
+    usage: type /launch <amount>
