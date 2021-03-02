@@ -1,0 +1,8 @@
+name: elementalwar
+version: 1
+author: kasturez
+main: me.kasturez.elementalwar.Main
+
+commands:
+  kits:
+    usage: type /kits to open the arsenal of weapon and armor
