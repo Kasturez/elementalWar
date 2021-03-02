@@ -24,14 +24,12 @@ public class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        //Fired when the server enables the plugin
-        getLogger().info("onEnable has been called");
+    openkits();
     }
 
     @Override
     public void onDisable() {
-        //Fired when the server stops and disables all plugins
-        getLogger().info("onDisable has been called");
+
     }
 
     private void openkits() {
@@ -134,6 +132,8 @@ public class Main extends JavaPlugin {
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         item.setItemMeta(meta);
         inv.setItem(10, item);
+
+        kits = inv;
     }
 
     @Override
@@ -144,6 +144,7 @@ public class Main extends JavaPlugin {
                 return true;
             }
             Player player = (Player) sender;
+            player.openInventory(kits);
         }
         return false;
     }
