@@ -24,8 +24,7 @@ public class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
-    openkits();
-    getLogger().info("kits built");
+        openkits();
     }
 
     @Override
