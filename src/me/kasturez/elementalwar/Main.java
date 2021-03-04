@@ -20,11 +20,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main extends JavaPlugin {
-    private static Inventory kits;
+
 
     @Override
     public void onEnable() {
     openkits();
+    getLogger().info("kits built");
     }
 
     @Override
@@ -32,10 +33,12 @@ public class Main extends JavaPlugin {
 
     }
 
+    private static Inventory kits;
     private void openkits() {
         Inventory inv = Bukkit.createInventory(null, 18, ChatColor.BOLD + "Kits" + ChatColor.GOLD);
         ItemStack item = new ItemStack(Material.BREAD);
         ItemMeta meta = item.getItemMeta();
+        assert meta != null;
         meta.setDisplayName(ChatColor.BLACK + "Food");
         List<String> lore = new ArrayList<>();
         lore.add("");
@@ -140,7 +143,7 @@ public class Main extends JavaPlugin {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (label.equalsIgnoreCase("kits")) {
             if (!(sender instanceof Player)) {
-                sender.sendMessage("fuck off!!!");
+                sender.sendMessage("im out!");
                 return true;
             }
             Player player = (Player) sender;
