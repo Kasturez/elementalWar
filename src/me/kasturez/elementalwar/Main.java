@@ -36,6 +36,7 @@ public class Main extends JavaPlugin {
         Inventory inv = Bukkit.createInventory(null, 18, ChatColor.BOLD + "Kits" + ChatColor.GOLD);
         ItemStack item = new ItemStack(Material.BREAD);
         ItemMeta meta = item.getItemMeta();
+        assert meta != null;
         meta.setDisplayName(ChatColor.BLACK + "Food");
         List<String> lore = new ArrayList<>();
         lore.add("");
