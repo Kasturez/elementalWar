@@ -9,6 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
@@ -16,16 +17,18 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
+
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main extends JavaPlugin {
+public class Main extends JavaPlugin implements Listener {
 
 
     @Override
     public void onEnable() {
         openkits();
-
+        this.getServer().getPluginManager().registerEvents(this, this);
     }
 
     @Override
@@ -34,6 +37,7 @@ public class Main extends JavaPlugin {
     }
 
     private static Inventory kits;
+
     private void openkits() {
         Inventory inv = Bukkit.createInventory(null, 18, ChatColor.AQUA + "Kits");
         ItemStack item = new ItemStack(Material.BREAD);
@@ -174,33 +178,23 @@ public class Main extends JavaPlugin {
         }
         return false;
     }
+
     @EventHandler
-    public void onClick(InventoryClickEvent event){
-        if(!event.getView().getTitle().contains("Kits"))
+    public void OnClick(InventoryClickEvent event) {
+        if (!event.getView().getTitle().contains("Kits"))
             return;
-        if(event.getCurrentItem() == null)
+        if (event.getCurrentItem() == null)
             return;
-        if(event.getCurrentItem().getItemMeta() == null)
+        if (event.getCurrentItem().getItemMeta() == null)
             return;
 
         Player player = (Player) event.getWhoClicked();
         event.setCancelled(true);
 
-        if(event.getClickedInventory().getType() == InventoryType.PLAYER)
-            return;
 
-        //slot of inventory kits
-        if(event.getSlot() == 0) {
-            //Food kit
-            if (!player.hasPermission("kits.Food")) {
-                player.sendMessage("You are not allow to open this kit");
-                return;
-            }
-            
-            //drop chest of kits
-            player.closeInventory();
-            player.updateInventory();
 
-        }
+
+        player.closeInventory();
+        player.updateInventory();
     }
 }
