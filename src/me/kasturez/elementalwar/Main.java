@@ -251,12 +251,6 @@ public class Main extends JavaPlugin implements Listener {
                 return;
             }
 
-            //drop chest of kits
-            player.closeInventory();
-            player.updateInventory();
-
-            player.closeInventory();
-            player.updateInventory();
         }
     }
 }
