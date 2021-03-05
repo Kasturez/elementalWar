@@ -239,18 +239,8 @@ public class Main extends JavaPlugin implements Listener {
         Player player = (Player) event.getWhoClicked();
         event.setCancelled(true);
 
-        if(event.getClickedInventory().getType() == InventoryType.PLAYER) {
+        if (event.getClickedInventory().getType() == InventoryType.PLAYER) {
             return;
-        }
-
-        //slot of inventory kits
-        if (event.getSlot() == 0) {
-            //Food kit
-            if (!player.hasPermission("kits.food")) {
-                player.sendMessage("You are not allow to open this kit");
-                return;
-            }
-
         }
     }
 }
