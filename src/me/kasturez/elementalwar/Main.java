@@ -234,21 +234,23 @@ public class Main extends JavaPlugin implements Listener {
             return;
         if (event.getCurrentItem().getItemMeta() == null)
             return;
+        }
 
         Player player = (Player) event.getWhoClicked();
         event.setCancelled(true);
         if (event.getClickedInventory().getType() == InventoryType.PLAYER)
             return;
 
-        if (event.getSlot() == 0) {
-            player.getInventory().addItem(new ItemStack(Material.COOKED_BEEF, 32));
-        }
-
-        if (event.getSlot() == 1) {
-            for (ItemStack item : TravelerKits.getContents()) {
-                player.getInventory().addItem(item);
+        if(event.getSlot() == 0) {
+            //Food kit
+            if (!player.hasPermission("kits.food")) {
+                player.sendMessage("You are not allow to open this kit");
+                return;
             }
-        }
+
+            //drop chest of kits
+            player.closeInventory();
+            player.updateInventory();
 
 
         player.closeInventory();
