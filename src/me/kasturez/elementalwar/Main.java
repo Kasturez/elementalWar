@@ -234,14 +234,14 @@ public class Main extends JavaPlugin implements Listener {
             return;
         if (event.getCurrentItem().getItemMeta() == null)
             return;
-        }
+
 
         Player player = (Player) event.getWhoClicked();
         event.setCancelled(true);
         if (event.getClickedInventory().getType() == InventoryType.PLAYER)
             return;
 
-        if(event.getSlot() == 0) {
+        if (event.getSlot() == 0) {
             //Food kit
             if (!player.hasPermission("kits.food")) {
                 player.sendMessage("You are not allow to open this kit");
@@ -253,7 +253,8 @@ public class Main extends JavaPlugin implements Listener {
             player.updateInventory();
 
 
-        player.closeInventory();
-        player.updateInventory();
+            player.closeInventory();
+            player.updateInventory();
+        }
     }
 }
