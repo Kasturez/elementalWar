@@ -243,20 +243,25 @@ public class Main extends JavaPlugin implements Listener {
             return;
         }
 
-        //slot of inventory kits
-        if (event.getSlot() == 0) {
-            //Food kit
-            if (!player.hasPermission("kits.food")) {
-                player.sendMessage("You are not allow to open this kit");
-                return;
-            }
-
-            //drop chest of kits
-            player.closeInventory();
-            player.updateInventory();
-
+        if (event.getSlot() == 0){
+            player.getInventory().addItem(new ItemStack(Material.COOKED_BEEF, 32));
             player.closeInventory();
             player.updateInventory();
         }
+
+        //slot of inventory kits
+//        if (event.getSlot() == 0) {
+//            //Food kit
+//            if (!player.hasPermission("kits.food")) {
+//                player.sendMessage("You are not allow to open this kit");
+//                return;
+//            }
+//            player.getInventory().addItem(TravelerKits.getContents());
+//
+//            //drop chest of kits
+//            player.closeInventory();
+//            player.updateInventory();
+//
+//        }
     }
 }
