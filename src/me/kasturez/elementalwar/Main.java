@@ -174,29 +174,32 @@ public class Main extends JavaPlugin {
         }
         return false;
     }
-    @EventHandler
+    @EventHandler()
     public void onClick(InventoryClickEvent event){
-        if(!event.getView().getTitle().contains("Kits"))
+        if(!event.getView().getTitle().contains("Kits")) {
             return;
-        if(event.getCurrentItem() == null)
+        }
+        if(event.getCurrentItem() == null) {
             return;
-        if(event.getCurrentItem().getItemMeta() == null)
+        }
+        if(event.getCurrentItem().getItemMeta() == null) {
             return;
+        }
 
         Player player = (Player) event.getWhoClicked();
         event.setCancelled(true);
 
-        /*if(event.getClickedInventory().getType() == InventoryType.PLAYER)
-            return;*/
-
+        /*if(event.getClickedInventory().getType() == InventoryType.PLAYER) {
+            return;
+        }*/
         //slot of inventory kits
         if(event.getSlot() == 0) {
             //Food kit
-            if (!player.hasPermission("kits.Food")) {
+            if (!player.hasPermission("kits.food")) {
                 player.sendMessage("You are not allow to open this kit");
                 return;
             }
-            
+
             //drop chest of kits
             player.closeInventory();
             player.updateInventory();
