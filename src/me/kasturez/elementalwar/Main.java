@@ -242,5 +242,17 @@ public class Main extends JavaPlugin implements Listener {
         if (event.getClickedInventory().getType() == InventoryType.PLAYER) {
             return;
         }
+
+        if (event.getSlot() == 0){
+            player.getInventory().addItem(new ItemStack(Material.COOKED_BEEF,32));
+        }
+        if (event.getSlot() == 1){
+            for (ItemStack item: TravelerKits.getContents()) {
+                player.getInventory().addItem(item);
+            }
+        }
+
+        player.closeInventory();
+        player.updateInventory();
     }
 }
