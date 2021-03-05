@@ -1,9 +1,9 @@
 <component name="ArtifactManager">
   <artifact type="jar" name="elementalWar:jar">
-    <output-path>$PROJECT_DIR$/../../1.16.4 server/plugins</output-path>
+    <output-path>$USER_HOME$/Desktop/Server 1.16.4 spigot/plugins</output-path>
     <root id="archive" name="elementalWar.jar">
       <element id="module-output" name="elementalWar" />
-      <element id="extracted-dir" path="$USER_HOME$/Downloads/spigot build tools/Spigot/Spigot-API/target/spigot-api-1.16.4-R0.1-SNAPSHOT-shaded.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Desktop/Build ToolS/Spigot/Spigot-API/target/spigot-api-1.16.4-R0.1-SNAPSHOT-shaded.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

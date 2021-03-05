@@ -53,6 +53,7 @@ public class Main extends JavaPlugin implements Listener {
         meta.addEnchant(Enchantment.PROTECTION_FALL, 4, true);
         item.setItemMeta(meta);
         inv.setItem(0, item);
+        item.removeEnchantment(Enchantment.PROTECTION_FALL);
 
         item.setType(Material.LEATHER_LEGGINGS);
         meta = item.getItemMeta();
@@ -75,7 +76,7 @@ public class Main extends JavaPlugin implements Listener {
         item.setType(Material.WOODEN_SWORD);
         meta = item.getItemMeta();
         meta.setDisplayName(ChatColor.DARK_GRAY + "Traveler's Excalibur");
-        item.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, 10);
+        meta.addEnchant(Enchantment.DAMAGE_ALL, 10, true);
         item.setItemMeta(meta);
         inv.setItem(4, item);
 
