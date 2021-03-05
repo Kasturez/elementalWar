@@ -195,7 +195,7 @@ public class Main extends JavaPlugin implements Listener {
         if(event.getClickedInventory().getType() == InventoryType.PLAYER) {
             return;
         }
-        
+
         //slot of inventory kits
         if (event.getSlot() == 0) {
             //Food kit
@@ -207,7 +207,6 @@ public class Main extends JavaPlugin implements Listener {
             //drop chest of kits
             player.closeInventory();
             player.updateInventory();
-
 
             player.closeInventory();
             player.updateInventory();
