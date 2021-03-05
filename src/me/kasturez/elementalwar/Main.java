@@ -186,8 +186,8 @@ public class Main extends JavaPlugin {
         Player player = (Player) event.getWhoClicked();
         event.setCancelled(true);
 
-        /*if(event.getClickedInventory().getType() == InventoryType.PLAYER)
-            return;*/
+        if(event.getClickedInventory().getType() == InventoryType.PLAYER)
+            return;
 
         //slot of inventory kits
         if(event.getSlot() == 0) {
