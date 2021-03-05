@@ -8,6 +8,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.TraderLlama;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -17,6 +18,7 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.omg.CORBA.TRANSACTION_MODE;
 
 
 import java.util.ArrayList;
@@ -28,6 +30,7 @@ public class Main extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         openkits();
+        initTravelerKits();
         this.getServer().getPluginManager().registerEvents(this, this);
     }
 
@@ -38,6 +41,50 @@ public class Main extends JavaPlugin implements Listener {
 
     private static Inventory kits;
 
+    private static Inventory TravelerKits;
+
+    //Traveler kits initializing
+    private void initTravelerKits() {
+        Inventory inv = Bukkit.createInventory(null, 9, "Traveler");
+        ItemStack item = new ItemStack(Material.LEATHER_BOOTS);
+        ItemMeta meta = item.getItemMeta();
+        assert meta != null;
+        meta.setDisplayName(ChatColor.DARK_GRAY + "Traveler's Boot");
+        meta.addEnchant(Enchantment.PROTECTION_FALL, 4, true);
+        item.setItemMeta(meta);
+        inv.setItem(0, item);
+
+        item.setType(Material.LEATHER_LEGGINGS);
+        meta = item.getItemMeta();
+        meta.setDisplayName(ChatColor.DARK_GRAY + "Traveler's Legging");
+        item.setItemMeta(meta);
+        inv.setItem(1, item);
+
+        item.setType(Material.LEATHER_CHESTPLATE);
+        meta = item.getItemMeta();
+        meta.setDisplayName(ChatColor.DARK_GRAY + "Traveler's Tunic");
+        item.setItemMeta(meta);
+        inv.setItem(2, item);
+
+        item.setType(Material.LEATHER_HELMET);
+        meta = item.getItemMeta();
+        meta.setDisplayName(ChatColor.DARK_GRAY + "Traveler's Cap");
+        item.setItemMeta(meta);
+        inv.setItem(3, item);
+
+        item.setType(Material.WOODEN_SWORD);
+        meta = item.getItemMeta();
+        meta.setDisplayName(ChatColor.DARK_GRAY + "Traveler's Excalibur");
+        item.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, 10);
+        item.setItemMeta(meta);
+        inv.setItem(4, item);
+
+
+        TravelerKits = inv;
+    }
+
+
+    //kits menu
     private void openkits() {
         Inventory inv = Bukkit.createInventory(null, 18, ChatColor.AQUA + "Kits");
         ItemStack item = new ItemStack(Material.BREAD);
@@ -190,8 +237,18 @@ public class Main extends JavaPlugin implements Listener {
 
         Player player = (Player) event.getWhoClicked();
         event.setCancelled(true);
+        if (event.getClickedInventory().getType() == InventoryType.PLAYER)
+            return;
 
+        if (event.getSlot() == 0) {
+            player.getInventory().addItem(new ItemStack(Material.COOKED_BEEF, 32));
+        }
 
+        if (event.getSlot() == 1) {
+            for (ItemStack item : TravelerKits.getContents()) {
+                player.getInventory().addItem(item);
+            }
+        }
 
 
         player.closeInventory();
