@@ -27,10 +27,15 @@ import java.util.List;
 public class Main extends JavaPlugin implements Listener {
 
 
+
+
     @Override
     public void onEnable() {
         openkits();
         initTravelerKits();
+        initLowWarlordKit();
+        initMidWarlordKit();
+        initTopWarlordKit();
         this.getServer().getPluginManager().registerEvents(this, this);
     }
 
@@ -41,41 +46,52 @@ public class Main extends JavaPlugin implements Listener {
 
     private static Inventory kits;
 
+    private static Inventory tools;
+
     private static Inventory TravelerKits;
 
-    //Traveler kits initializing
+    private static Inventory LowWarlordKit;
+
+    private static Inventory MidWarlordKit;
+
+    private static Inventory TopWarlordKit;
+
+    //Traveler kit initializing
     private void initTravelerKits() {
         Inventory inv = Bukkit.createInventory(null, 9, "Traveler");
-        ItemStack item = new ItemStack(Material.LEATHER_BOOTS);
+        ItemStack item = new ItemStack(Material.DIAMOND_SWORD);
         ItemMeta meta = item.getItemMeta();
         assert meta != null;
-        meta.setDisplayName(ChatColor.DARK_GRAY + "Traveler's Boot");
-        meta.addEnchant(Enchantment.PROTECTION_FALL, 4, true);
+        meta.setDisplayName(ChatColor.DARK_GRAY + "Traveler's Excalibur");
+        meta.addEnchant(Enchantment.DAMAGE_ALL, 1, true);
         item.setItemMeta(meta);
         inv.setItem(0, item);
+        item.removeEnchantment(Enchantment.DAMAGE_ALL);
 
-        item.setType(Material.LEATHER_LEGGINGS);
+        item.setType(Material.DIAMOND_HELMET);
         meta = item.getItemMeta();
-        meta.setDisplayName(ChatColor.DARK_GRAY + "Traveler's Legging");
+        meta.setDisplayName(ChatColor.DARK_GRAY + "Traveler's Cap");
+        meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL,1,true);
         item.setItemMeta(meta);
         inv.setItem(1, item);
 
-        item.setType(Material.LEATHER_CHESTPLATE);
+        item.setType(Material.DIAMOND_CHESTPLATE);
         meta = item.getItemMeta();
         meta.setDisplayName(ChatColor.DARK_GRAY + "Traveler's Tunic");
         item.setItemMeta(meta);
         inv.setItem(2, item);
 
-        item.setType(Material.LEATHER_HELMET);
+        item.setType(Material.DIAMOND_LEGGINGS);
         meta = item.getItemMeta();
-        meta.setDisplayName(ChatColor.DARK_GRAY + "Traveler's Cap");
+        meta.setDisplayName(ChatColor.DARK_GRAY + "Traveler's Legging");
         item.setItemMeta(meta);
         inv.setItem(3, item);
+        item.removeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL);
 
-        item.setType(Material.WOODEN_SWORD);
+        item.setType(Material.DIAMOND_BOOTS);
         meta = item.getItemMeta();
-        meta.setDisplayName(ChatColor.DARK_GRAY + "Traveler's Excalibur");
-        item.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, 10);
+        meta.setDisplayName(ChatColor.DARK_GRAY + "Traveler's Boot");
+        meta.addEnchant(Enchantment.PROTECTION_FALL, 1, true);
         item.setItemMeta(meta);
         inv.setItem(4, item);
 
@@ -83,6 +99,145 @@ public class Main extends JavaPlugin implements Listener {
         TravelerKits = inv;
     }
 
+    //Low tier warlord kit initializing
+    private void initLowWarlordKit() {
+        Inventory inv = Bukkit.createInventory(null, 9, "Low tier warlord");
+        ItemStack item = new ItemStack(Material.DIAMOND_SWORD);
+        ItemMeta meta = item.getItemMeta();
+        assert meta != null;
+        meta.setDisplayName(ChatColor.DARK_RED + "LT_Warlord's Excalibur");
+        meta.addEnchant(Enchantment.DAMAGE_ALL, 8, true);
+        meta.addEnchant(Enchantment.FIRE_ASPECT, 5, true);
+        item.setItemMeta(meta);
+        inv.setItem(0, item);
+        item.removeEnchantment(Enchantment.DAMAGE_ALL);
+        item.removeEnchantment(Enchantment.FIRE_ASPECT);
+
+        item.setType(Material.DIAMOND_HELMET);
+        meta = item.getItemMeta();
+        meta.setDisplayName(ChatColor.DARK_RED + "LT_Warlord's Cap");
+        meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 8, true);
+        meta.addEnchant(Enchantment.PROTECTION_FIRE, 8, true);
+        meta.addEnchant(Enchantment.THORNS, 5, true);
+        meta.addEnchant(Enchantment.MENDING, 5, true);
+        item.setItemMeta(meta);
+        inv.setItem(1, item);
+
+        item.setType(Material.DIAMOND_CHESTPLATE);
+        meta = item.getItemMeta();
+        meta.setDisplayName(ChatColor.DARK_RED + "LT_Warlord's Tunic");
+        item.setItemMeta(meta);
+        inv.setItem(2, item);
+
+        item.setType(Material.DIAMOND_LEGGINGS);
+        meta = item.getItemMeta();
+        meta.setDisplayName(ChatColor.DARK_RED + "LT_Warlord's Legging");
+        item.setItemMeta(meta);
+        inv.setItem(3, item);
+        item.removeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL);
+        item.removeEnchantment(Enchantment.PROTECTION_FIRE);
+        item.removeEnchantment(Enchantment.THORNS);
+        item.removeEnchantment(Enchantment.MENDING);
+
+        item.setType(Material.DIAMOND_BOOTS);
+        meta = item.getItemMeta();
+        meta.setDisplayName(ChatColor.DARK_RED + "LT_Warlord's Boot");
+        meta.addEnchant(Enchantment.PROTECTION_FALL, 8, true);
+        meta.addEnchant(Enchantment.DEPTH_STRIDER, 8, true);
+        meta.addEnchant(Enchantment.OXYGEN, 8, true);
+        meta.addEnchant(Enchantment.MENDING, 5, true);
+        item.setItemMeta(meta);
+        inv.setItem(4, item);
+
+
+        LowWarlordKit = inv;
+    }
+
+    //Mid tier warlord kit initializing
+    private void initMidWarlordKit() {
+        Inventory inv = Bukkit.createInventory(null, 9, "Mid tier warlord");
+        ItemStack item = new ItemStack(Material.DIAMOND_SWORD);
+        ItemMeta meta = item.getItemMeta();
+        assert meta != null;
+        meta.setDisplayName(ChatColor.DARK_RED + "MT_Warlord's Excalibur");
+        meta.addEnchant(Enchantment.DAMAGE_ALL, 9, true);
+        item.setItemMeta(meta);
+        inv.setItem(0, item);
+        item.removeEnchantment(Enchantment.DAMAGE_ALL);
+
+        item.setType(Material.DIAMOND_HELMET);
+        meta = item.getItemMeta();
+        meta.setDisplayName(ChatColor.DARK_RED + "LT_Warlord's Cap");
+        meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 9, true);
+        item.setItemMeta(meta);
+        inv.setItem(1, item);
+
+        item.setType(Material.DIAMOND_CHESTPLATE);
+        meta = item.getItemMeta();
+        meta.setDisplayName(ChatColor.DARK_RED + "LT_Warlord's Tunic");
+        item.setItemMeta(meta);
+        inv.setItem(2, item);
+
+        item.setType(Material.DIAMOND_LEGGINGS);
+        meta = item.getItemMeta();
+        meta.setDisplayName(ChatColor.DARK_RED + "LT_Warlord's Legging");
+        item.setItemMeta(meta);
+        inv.setItem(3, item);
+        item.removeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL);
+
+        item.setType(Material.DIAMOND_BOOTS);
+        meta = item.getItemMeta();
+        meta.setDisplayName(ChatColor.DARK_RED + "LT_Warlord's Boot");
+        meta.addEnchant(Enchantment.PROTECTION_FALL, 9, true);
+        item.setItemMeta(meta);
+        inv.setItem(4, item);
+
+
+        MidWarlordKit = inv;
+    }
+
+    //Top tier warlord kit initializing
+    private void initTopWarlordKit() {
+        Inventory inv = Bukkit.createInventory(null, 9, "Top tier warlord");
+        ItemStack item = new ItemStack(Material.DIAMOND_SWORD);
+        ItemMeta meta = item.getItemMeta();
+        assert meta != null;
+        meta.setDisplayName(ChatColor.DARK_RED + "LT_Warlord's Excalibur");
+        meta.addEnchant(Enchantment.DAMAGE_ALL, 10, true);
+        item.setItemMeta(meta);
+        inv.setItem(0, item);
+        item.removeEnchantment(Enchantment.DAMAGE_ALL);
+
+        item.setType(Material.DIAMOND_HELMET);
+        meta = item.getItemMeta();
+        meta.setDisplayName(ChatColor.DARK_RED + "TT_Warlord's Cap");
+        meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 10, true);
+        item.setItemMeta(meta);
+        inv.setItem(1, item);
+
+        item.setType(Material.DIAMOND_CHESTPLATE);
+        meta = item.getItemMeta();
+        meta.setDisplayName(ChatColor.DARK_RED + "TT_Warlord's Tunic");
+        item.setItemMeta(meta);
+        inv.setItem(2, item);
+
+        item.setType(Material.DIAMOND_LEGGINGS);
+        meta = item.getItemMeta();
+        meta.setDisplayName(ChatColor.DARK_RED + "TT_Warlord's Legging");
+        item.setItemMeta(meta);
+        inv.setItem(3, item);
+        item.removeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL);
+
+        item.setType(Material.DIAMOND_BOOTS);
+        meta = item.getItemMeta();
+        meta.setDisplayName(ChatColor.DARK_RED + "TT_Warlord's Boot");
+        meta.addEnchant(Enchantment.PROTECTION_FALL, 10, true);
+        item.setItemMeta(meta);
+        inv.setItem(4, item);
+
+
+        TopWarlordKit = inv;
+    }
 
     //kits menu
     private void openkits() {
@@ -248,20 +403,63 @@ public class Main extends JavaPlugin implements Listener {
             player.closeInventory();
             player.updateInventory();
         }
+        if (event.getSlot() == 1){
+            player.closeInventory();
+            player.updateInventory();
+            for (ItemStack item : TravelerKits.getContents()) {
+                player.getInventory().addItem(item);
+            }
+        }
+        if (event.getSlot() == 2){
+            player.closeInventory();
+            player.updateInventory();
 
-        //slot of inventory kits
-//        if (event.getSlot() == 0) {
-//            //Food kit
-//            if (!player.hasPermission("kits.food")) {
-//                player.sendMessage("You are not allow to open this kit");
-//                return;
-//            }
-//            player.getInventory().addItem(TravelerKits.getContents());
-//
-//            //drop chest of kits
-//            player.closeInventory();
-//            player.updateInventory();
-//
-//        }
+        }
+        if (event.getSlot() == 3){
+            player.closeInventory();
+            player.updateInventory();
+
+        }
+        if (event.getSlot() == 4){
+            player.closeInventory();
+            player.updateInventory();
+
+        }
+        if (event.getSlot() == 5){
+            player.closeInventory();
+            player.updateInventory();
+
+        }
+        if (event.getSlot() == 6){
+            player.closeInventory();
+            player.updateInventory();
+
+        }
+        if (event.getSlot() == 7){
+            player.closeInventory();
+            player.updateInventory();
+
+        }
+        if (event.getSlot() == 8){
+            player.closeInventory();
+            player.updateInventory();
+            for (ItemStack item : LowWarlordKit.getContents()) {
+                player.getInventory().addItem(item);
+            }
+        }
+        if (event.getSlot() == 9){
+            player.closeInventory();
+            player.updateInventory();
+            for (ItemStack item : MidWarlordKit.getContents()) {
+                player.getInventory().addItem(item);
+            }
+        }
+        if (event.getSlot() == 10){
+            player.closeInventory();
+            player.updateInventory();
+            for (ItemStack item : TopWarlordKit.getContents()) {
+                player.getInventory().addItem(item);
+            }
+        }
     }
 }
