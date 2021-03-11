@@ -26,9 +26,6 @@ import java.util.List;
 
 public class Main extends JavaPlugin implements Listener {
 
-
-
-
     @Override
     public void onEnable() {
         openkits();
