@@ -7,6 +7,7 @@ import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.TraderLlama;
 import org.bukkit.event.EventHandler;
@@ -31,6 +32,12 @@ public class Main extends JavaPlugin implements Listener {
     public void onEnable() {
         openkits();
         initTravelerKits();
+        initLowSoldierKit();
+        initMidSoldierKit();
+        initTopSoldierKit();
+        initLowWarriorKit();
+        initMidWarriorKit();
+        initTopWarriorKit();
         this.getServer().getPluginManager().registerEvents(this, this);
     }
 
@@ -41,7 +48,26 @@ public class Main extends JavaPlugin implements Listener {
 
     private static Inventory kits;
 
-    private static Inventory TravelerKits;
+    private static Inventory TravelerKit;
+
+    private static Inventory LowSoldierKit;
+
+    private static Inventory MidSoldierKit;
+
+    private static Inventory TopSoldierKit;
+
+    private static Inventory LowWarriorKit;
+
+    private static Inventory MidWarriorKit;
+
+    private static Inventory TopWarriorKit;
+
+    private static Inventory LowWarlordKit;
+
+    private static Inventory MidWarlordKit;
+
+    private static Inventory TopWarlordKit;
+    
 
     //Traveler kits initializing
     private void initTravelerKits() {
@@ -81,9 +107,249 @@ public class Main extends JavaPlugin implements Listener {
         inv.setItem(4, item);
 
 
-        TravelerKits = inv;
+        TravelerKit = inv;
     }
 
+    //Low soldier kit
+    private void initLowSoldierKit(){
+        Inventory inv = Bukkit.createInventory(null, 9 , "Low Soldier Kit");
+        ItemStack item = new ItemStack(Material.DIAMOND_BOOTS);
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName("Low Soldier's Boots");
+        meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 2, true);
+        meta.addEnchant(Enchantment.DURABILITY, 3, true);
+        item.setItemMeta(meta);
+        inv.setItem(0,item);
+
+        item.setType(Material.DIAMOND_LEGGINGS);
+        meta = item.getItemMeta();
+        meta.setDisplayName("Low Soldier's Leggings");
+        item.setItemMeta(meta);
+        inv.setItem(1,item);
+
+        item.setType(Material.DIAMOND_CHESTPLATE);
+        meta = item.getItemMeta();
+        meta.setDisplayName("Low Soldier's Chestplate");
+        item.setItemMeta(meta);
+        inv.setItem(2,item);
+
+        item.setType(Material.DIAMOND_HELMET);
+        meta = item.getItemMeta();
+        meta.setDisplayName("Low Soldier's Helmet");
+        item.setItemMeta(meta);
+        inv.setItem(3,item);
+
+        item.removeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL);
+        item.setType(Material.DIAMOND_SWORD);
+        meta = item.getItemMeta();
+        meta.setDisplayName("Low Soldier's Sword");
+        meta.addEnchant(Enchantment.DAMAGE_ALL,2,true);
+        item.setItemMeta(meta);
+        inv.setItem(4,item);
+
+        LowSoldierKit = inv;
+
+    }
+    //Mid soldier kit
+    private void initMidSoldierKit(){
+        Inventory inv = Bukkit.createInventory(null, 9 , "Mid Soldier Kit");
+        ItemStack item = new ItemStack(Material.DIAMOND_BOOTS);
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName("Mid Soldier's Boots");
+        meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 3, true);
+        meta.addEnchant(Enchantment.DURABILITY, 3, true);
+        item.setItemMeta(meta);
+        inv.setItem(0,item);
+
+        item.setType(Material.DIAMOND_LEGGINGS);
+        meta = item.getItemMeta();
+        meta.setDisplayName("Mid Soldier's Leggings");
+        item.setItemMeta(meta);
+        inv.setItem(1,item);
+
+        item.setType(Material.DIAMOND_CHESTPLATE);
+        meta = item.getItemMeta();
+        meta.setDisplayName("Mid Soldier's Chestplate");
+        item.setItemMeta(meta);
+        inv.setItem(2,item);
+
+        item.setType(Material.DIAMOND_HELMET);
+        meta = item.getItemMeta();
+        meta.setDisplayName("Mid Soldier's Helmet");
+        item.setItemMeta(meta);
+        inv.setItem(3,item);
+
+        item.removeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL);
+        item.setType(Material.DIAMOND_SWORD);
+        meta = item.getItemMeta();
+        meta.setDisplayName("Mid Soldier's Sword");
+        meta.addEnchant(Enchantment.DAMAGE_ALL,3,true);
+        item.setItemMeta(meta);
+        inv.setItem(4,item);
+
+        MidSoldierKit = inv;
+
+    }
+    //Top soldier kit
+    private void initTopSoldierKit(){
+        Inventory inv = Bukkit.createInventory(null, 9 , "Top Soldier Kit");
+        ItemStack item = new ItemStack(Material.DIAMOND_BOOTS);
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName("Top Soldier's Boots");
+        meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 4, true);
+        meta.addEnchant(Enchantment.DURABILITY, 3, true);
+        item.setItemMeta(meta);
+        inv.setItem(0,item);
+
+        item.setType(Material.DIAMOND_LEGGINGS);
+        meta = item.getItemMeta();
+        meta.setDisplayName("Top Soldier's Leggings");
+        item.setItemMeta(meta);
+        inv.setItem(1,item);
+
+        item.setType(Material.DIAMOND_CHESTPLATE);
+        meta = item.getItemMeta();
+        meta.setDisplayName("Top Soldier's Chestplate");
+        item.setItemMeta(meta);
+        inv.setItem(2,item);
+
+        item.setType(Material.DIAMOND_HELMET);
+        meta = item.getItemMeta();
+        meta.setDisplayName("Top Soldier's Helmet");
+        item.setItemMeta(meta);
+        inv.setItem(3,item);
+
+        item.removeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL);
+        item.setType(Material.DIAMOND_SWORD);
+        meta = item.getItemMeta();
+        meta.setDisplayName("Top Soldier's Sword");
+        meta.addEnchant(Enchantment.DAMAGE_ALL,4,true);
+        item.setItemMeta(meta);
+        inv.setItem(4,item);
+
+        TopSoldierKit = inv;
+
+    }
+    //Low warrior kit
+    private void initLowWarriorKit(){
+        Inventory inv = Bukkit.createInventory(null, 9 , "Low Warrior Kit");
+        ItemStack item = new ItemStack(Material.DIAMOND_BOOTS);
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName("Low Warrior's Boots");
+        meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 5, true);
+        meta.addEnchant(Enchantment.DURABILITY, 3, true);
+        item.setItemMeta(meta);
+        inv.setItem(0,item);
+
+        item.setType(Material.DIAMOND_LEGGINGS);
+        meta = item.getItemMeta();
+        meta.setDisplayName("Low Warrior's Leggings");
+        item.setItemMeta(meta);
+        inv.setItem(1,item);
+
+        item.setType(Material.DIAMOND_CHESTPLATE);
+        meta = item.getItemMeta();
+        meta.setDisplayName("Low Warrior's Chestplate");
+        item.setItemMeta(meta);
+        inv.setItem(2,item);
+
+        item.setType(Material.DIAMOND_HELMET);
+        meta = item.getItemMeta();
+        meta.setDisplayName("Low Warrior's Helmet");
+        item.setItemMeta(meta);
+        inv.setItem(3,item);
+
+        item.removeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL);
+        item.setType(Material.DIAMOND_SWORD);
+        meta = item.getItemMeta();
+        meta.setDisplayName("Low Warrior's Sword");
+        meta.addEnchant(Enchantment.DAMAGE_ALL,5,true);
+        item.setItemMeta(meta);
+        inv.setItem(4,item);
+
+        LowWarriorKit = inv;
+
+    }
+    //Mid warrior kit
+    private void initMidWarriorKit(){
+        Inventory inv = Bukkit.createInventory(null, 9 , "Mid Warrior Kit");
+        ItemStack item = new ItemStack(Material.DIAMOND_BOOTS);
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName("Mid Warrior's Boots");
+        meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 6, true);
+        meta.addEnchant(Enchantment.DURABILITY, 3, true);
+        item.setItemMeta(meta);
+        inv.setItem(0,item);
+
+        item.setType(Material.DIAMOND_LEGGINGS);
+        meta = item.getItemMeta();
+        meta.setDisplayName("Mid Warrior's Leggings");
+        item.setItemMeta(meta);
+        inv.setItem(1,item);
+
+        item.setType(Material.DIAMOND_CHESTPLATE);
+        meta = item.getItemMeta();
+        meta.setDisplayName("Mid Warrior's Chestplate");
+        item.setItemMeta(meta);
+        inv.setItem(2,item);
+
+        item.setType(Material.DIAMOND_HELMET);
+        meta = item.getItemMeta();
+        meta.setDisplayName("Mid Warrior's Helmet");
+        item.setItemMeta(meta);
+        inv.setItem(3,item);
+
+        item.removeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL);
+        item.setType(Material.DIAMOND_SWORD);
+        meta = item.getItemMeta();
+        meta.setDisplayName("Mid Warrior's Sword");
+        meta.addEnchant(Enchantment.DAMAGE_ALL,6,true);
+        item.setItemMeta(meta);
+        inv.setItem(4,item);
+
+        MidWarriorKit = inv;
+
+    }
+    //Top warrior kit
+    private void initTopWarriorKit(){
+        Inventory inv = Bukkit.createInventory(null, 9 , "Top Warrior Kit");
+        ItemStack item = new ItemStack(Material.DIAMOND_BOOTS);
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName("Top Warrior's Boots");
+        meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 7, true);
+        meta.addEnchant(Enchantment.DURABILITY, 3, true);
+        item.setItemMeta(meta);
+        inv.setItem(0,item);
+
+        item.setType(Material.DIAMOND_LEGGINGS);
+        meta = item.getItemMeta();
+        meta.setDisplayName("Top Warrior's Leggings");
+        item.setItemMeta(meta);
+        inv.setItem(1,item);
+
+        item.setType(Material.DIAMOND_CHESTPLATE);
+        meta = item.getItemMeta();
+        meta.setDisplayName("Top Warrior's Chestplate");
+        item.setItemMeta(meta);
+        inv.setItem(2,item);
+
+        item.setType(Material.DIAMOND_HELMET);
+        meta = item.getItemMeta();
+        meta.setDisplayName("Top Warrior's Helmet");
+        item.setItemMeta(meta);
+        inv.setItem(3,item);
+
+        item.removeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL);
+        item.setType(Material.DIAMOND_SWORD);
+        meta = item.getItemMeta();
+        meta.setDisplayName("Top Warrior's Sword");
+        meta.addEnchant(Enchantment.DAMAGE_ALL,7,true);
+        item.setItemMeta(meta);
+        inv.setItem(4,item);
+
+        TopWarriorKit = inv;
+
+    }
 
     //kits menu
     private void openkits() {
@@ -248,7 +514,37 @@ public class Main extends JavaPlugin implements Listener {
             player.getInventory().addItem(new ItemStack(Material.COOKED_BEEF,32));
         }
         if (event.getSlot() == 1){
-            for (ItemStack item: TravelerKits.getContents()) {
+            for (ItemStack item: TravelerKit.getContents()) {
+                player.getInventory().addItem(item);
+            }
+        }
+        if (event.getSlot() == 2){
+            for (ItemStack item: LowSoldierKit.getContents()) {
+                player.getInventory().addItem(item);
+            }
+        }
+        if (event.getSlot() == 3){
+            for (ItemStack item: MidSoldierKit.getContents()) {
+                player.getInventory().addItem(item);
+            }
+        }
+        if (event.getSlot() == 4){
+            for (ItemStack item: TopSoldierKit.getContents()) {
+                player.getInventory().addItem(item);
+            }
+        }
+        if (event.getSlot() == 5){
+            for (ItemStack item: LowWarriorKit.getContents()) {
+                player.getInventory().addItem(item);
+            }
+        }
+        if (event.getSlot() == 6){
+            for (ItemStack item: MidWarriorKit.getContents()) {
+                player.getInventory().addItem(item);
+            }
+        }
+        if (event.getSlot() == 7){
+            for (ItemStack item: TopWarriorKit.getContents()) {
                 player.getInventory().addItem(item);
             }
         }
