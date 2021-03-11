@@ -1,8 +1,8 @@
 main: me.kasturez.elementalwar.Main
-name: elementalwar
+name: elementalwarkit
 version: 1.0
 author: kasturez
-api-version: 1.13
+api-version: 1.16
 
 commands:
   kits:

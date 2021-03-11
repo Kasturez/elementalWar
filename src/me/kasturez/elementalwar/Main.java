@@ -19,7 +19,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -121,7 +120,7 @@ public class Main extends JavaPlugin implements Listener {
         ItemMeta meta = item.getItemMeta();
         meta.setDisplayName("Low Soldier's Boots");
         meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 2, true);
-        meta.addEnchant(Enchantment.PROTECTION_FALL, 4 ,true);
+        meta.addEnchant(Enchantment.PROTECTION_FALL, 4, true);
         meta.addEnchant(Enchantment.DURABILITY, 3, true);
         item.setItemMeta(meta);
         inv.setItem(4, item);
@@ -251,7 +250,7 @@ public class Main extends JavaPlugin implements Listener {
         ItemMeta meta = item.getItemMeta();
         meta.setDisplayName("Low Warrior's Boots");
         meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 5, true);
-        meta.addEnchant(Enchantment.PROTECTION_FALL, 4 , true);
+        meta.addEnchant(Enchantment.PROTECTION_FALL, 4, true);
         meta.addEnchant(Enchantment.DURABILITY, 3, true);
         item.setItemMeta(meta);
         inv.setItem(4, item);
@@ -295,7 +294,7 @@ public class Main extends JavaPlugin implements Listener {
         assert meta != null;
         meta.setDisplayName("Mid Warrior's Boots");
         meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 6, true);
-        meta.addEnchant(Enchantment.PROTECTION_FALL, 4 , true);
+        meta.addEnchant(Enchantment.PROTECTION_FALL, 4, true);
         meta.addEnchant(Enchantment.DURABILITY, 3, true);
         item.setItemMeta(meta);
         inv.setItem(4, item);
@@ -724,26 +723,26 @@ public class Main extends JavaPlugin implements Listener {
             for (ItemStack item : TopWarriorKit.getContents()) {
                 player.getInventory().addItem(item);
             }
-            if (event.getSlot() == 8) {
-                player.closeInventory();
-                player.updateInventory();
-                for (ItemStack item : LowWarlordKit.getContents()) {
-                    player.getInventory().addItem(item);
-                }
+        }
+        if (event.getSlot() == 8) {
+            player.closeInventory();
+            player.updateInventory();
+            for (ItemStack item : LowWarlordKit.getContents()) {
+                player.getInventory().addItem(item);
             }
-            if (event.getSlot() == 9) {
-                player.closeInventory();
-                player.updateInventory();
-                for (ItemStack item : MidWarlordKit.getContents()) {
-                    player.getInventory().addItem(item);
-                }
+        }
+        if (event.getSlot() == 9) {
+            player.closeInventory();
+            player.updateInventory();
+            for (ItemStack item : MidWarlordKit.getContents()) {
+                player.getInventory().addItem(item);
             }
-            if (event.getSlot() == 10) {
-                player.closeInventory();
-                player.updateInventory();
-                for (ItemStack item : TopWarlordKit.getContents()) {
-                    player.getInventory().addItem(item);
-                }
+        }
+        if (event.getSlot() == 10) {
+            player.closeInventory();
+            player.updateInventory();
+            for (ItemStack item : TopWarlordKit.getContents()) {
+                player.getInventory().addItem(item);
             }
         }
     }
