@@ -10,8 +10,8 @@ public class Main extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
-        ElementalKit.initAllKits();
         this.getCommand("kits").setExecutor(new ElementalKit(this));
+        this.getServer().getPluginManager().registerEvents(new InventoryEvent(this), this);
     }
 
     @Override
