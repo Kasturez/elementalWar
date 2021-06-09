@@ -18,9 +18,24 @@ public class GuildCMD implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (label.equalsIgnoreCase("guild")) {
+        if (cmd.getName().equalsIgnoreCase("guild")) {
             if (!(sender instanceof Player)) {
+                // sender is a server
                 sender.sendMessage("im out!");
+                return true;
+            }
+            // sender is a player
+            if(args.length == 0){
+                sender.sendMessage("guild info");
+                return true;
+            }
+
+            if(args[0].equalsIgnoreCase("create")){
+                sender.sendMessage("creating guild");
+                return true;
+            }
+            if(args[0].equalsIgnoreCase("invite")){
+                sender.sendMessage("inviting a player");
                 return true;
             }
         }
