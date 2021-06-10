@@ -34,6 +34,11 @@ public class GuildCMD implements CommandExecutor {
                 sender.sendMessage("creating guild");
                 return true;
             }
+            if(args[0].equalsIgnoreCase("claim")){
+                sender.sendMessage("claiming");
+
+                return true;
+            }
             if(args[0].equalsIgnoreCase("invite")){
                 sender.sendMessage("inviting a player");
                 return true;

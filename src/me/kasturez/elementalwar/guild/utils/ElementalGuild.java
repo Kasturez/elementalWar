@@ -36,6 +36,10 @@ public class ElementalGuild {
         return players;
     }
 
+    public boolean isPlayerInGuild(Player p){
+        return players.containsKey(p.getUniqueId());
+    }
+
     public GuildPlayers getGuildPlayers(Player p){
         return players.get(p.getUniqueId());
     }

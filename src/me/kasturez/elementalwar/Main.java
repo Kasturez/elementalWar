@@ -1,6 +1,8 @@
 package me.kasturez.elementalwar;
 
 
+import me.kasturez.elementalwar.events.InventoryEvent;
+import me.kasturez.elementalwar.guild.commands.GuildCMD;
 import me.kasturez.elementalwar.kits.ElementalKit;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;

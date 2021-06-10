@@ -1,5 +1,6 @@
-package me.kasturez.elementalwar;
+package me.kasturez.elementalwar.events;
 
+import me.kasturez.elementalwar.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
