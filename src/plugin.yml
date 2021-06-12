@@ -9,4 +9,6 @@ commands:
     usage: "/g create [name]"
     aliases:
       - g
+  fly:
+
 
