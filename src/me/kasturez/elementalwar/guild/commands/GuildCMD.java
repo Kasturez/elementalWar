@@ -16,6 +16,10 @@ public class GuildCMD implements CommandExecutor {
         this.plugin = plugin;
     }
 
+    /*public void guild(Main main){
+        plugin = main;
+    }*/
+
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (cmd.getName().equalsIgnoreCase("guild")) {
