@@ -1,6 +1,5 @@
 package me.kasturez.elementalwar.kits;
 
-import me.kasturez.elementalwar.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -18,11 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ElementalKit implements CommandExecutor {
-    private final Main plugin;
-
-    public ElementalKit(Main plugin) {
-        this.plugin = plugin;
-    }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] strings) {
@@ -32,13 +26,13 @@ public class ElementalKit implements CommandExecutor {
                 return true;
             }
             Player player = (Player) sender;
-            player.openInventory(openkits());
+            player.openInventory(openKits());
         }
         return false;
     }
 
     //kit menu
-    private static Inventory openkits() {
+    private static Inventory openKits() {
         Inventory inv = Bukkit.createInventory(null, 18, ChatColor.AQUA + "Kits");
         ItemStack item = new ItemStack(Material.BREAD);
         ItemMeta meta = item.getItemMeta();

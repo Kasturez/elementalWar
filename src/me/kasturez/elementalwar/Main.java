@@ -12,7 +12,7 @@ public class Main extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
-        this.getCommand("kits").setExecutor(new ElementalKit(this));
+        this.getCommand("kits").setExecutor(new ElementalKit());
         this.getCommand("guild").setExecutor(new GuildCMD(this));
         this.getServer().getPluginManager().registerEvents(new InventoryEvent(this), this);
     }
