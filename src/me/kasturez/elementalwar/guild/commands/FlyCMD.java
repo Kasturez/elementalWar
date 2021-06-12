@@ -1,4 +1,4 @@
-package me.DanXChaos.JerryProject;
+package me.kasturez.elementalwar.guild.commands;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
