@@ -11,15 +11,17 @@ public class LandClaim extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        
+        this.chunks = new HashMap<>();
     }
 
     public void addChunk(String chunk, ElementalGuild guild){
         chunks.put(chunk,guild);
     }
+
     public boolean isClaimed(String chunk){
         return chunks.containsKey(chunk);
     }
+
     public ElementalGuild getGuild(String chunk){
         return chunks.get(chunk);
     }

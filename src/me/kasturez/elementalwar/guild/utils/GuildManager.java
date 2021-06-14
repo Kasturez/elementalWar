@@ -7,9 +7,9 @@ import java.util.List;
 
 public class GuildManager{
 
-    private List<ElementalGuild> guilds = new ArrayList<ElementalGuild>();
+    private static List<ElementalGuild> guilds = new ArrayList<ElementalGuild>();
 
-    public void createGuild(String name, Player p){
+    public static void createGuild(String name, Player p){
         ElementalGuild g = new ElementalGuild(name, "Nothing");
         g.addPlayer(p, GuildRanks.ADMIN);
         guilds.add(g);

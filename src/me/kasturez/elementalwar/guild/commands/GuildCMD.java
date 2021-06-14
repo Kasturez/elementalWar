@@ -2,6 +2,10 @@ package me.kasturez.elementalwar.guild.commands;
 
 import me.kasturez.elementalwar.Main;
 import me.kasturez.elementalwar.guild.utils.ChatUtils;
+import me.kasturez.elementalwar.guild.utils.GuildManager;
+import me.kasturez.elementalwar.guild.utils.GuildPlayers;
+import me.kasturez.elementalwar.guild.utils.PlayerManager;
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -24,6 +28,8 @@ public class GuildCMD implements CommandExecutor {
                 sender.sendMessage("im out!");
                 return true;
             }
+
+            Player player = (Player) sender;
             // sender is a player
             if(args.length == 0){
                 sender.sendMessage("guild info");
@@ -32,15 +38,25 @@ public class GuildCMD implements CommandExecutor {
 
             if(args[0].equalsIgnoreCase("create")){
                 sender.sendMessage("creating guild");
+                if (args.length == 1){
+                    sender.sendMessage("guild need a name");
+                    return true;
+                }
+                GuildManager.createGuild(args[1], player);
+                sender.sendMessage("created guild with name: " + args[1]);
                 return true;
             }
+
             if(args[0].equalsIgnoreCase("claim")){
                 sender.sendMessage("claiming");
-
+                player.getLocation().getChunk();
                 return true;
             }
+
             if(args[0].equalsIgnoreCase("invite")){
                 sender.sendMessage("inviting a player");
+                Player invitedPlayer = Bukkit.getPlayer(args[1]);
+                GuildPlayers invitedGPlayer = PlayerManager.getGPlayer(invitedPlayer.getUniqueId());
                 return true;
             }
         }
