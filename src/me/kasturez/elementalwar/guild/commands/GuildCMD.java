@@ -2,6 +2,9 @@ package me.kasturez.elementalwar.guild.commands;
 
 import me.kasturez.elementalwar.Main;
 import me.kasturez.elementalwar.guild.utils.ChatUtils;
+import me.kasturez.elementalwar.guild.utils.GuildPlayers;
+import me.kasturez.elementalwar.guild.utils.PlayerManager;
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -40,6 +43,8 @@ public class GuildCMD implements CommandExecutor {
             }
             if(args[0].equalsIgnoreCase("invite")){
                 sender.sendMessage("inviting a player");
+                Player invitedPlayer = Bukkit.getPlayer(args[1]);
+                GuildPlayers invitedGPlayer = PlayerManager.getGPlayer(invitedPlayer.getUniqueId());
                 return true;
             }
         }
