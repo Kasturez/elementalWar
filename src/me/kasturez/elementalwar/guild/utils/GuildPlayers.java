@@ -8,20 +8,48 @@ public class GuildPlayers {
 
     private GuildRanks guildRanks;
 
-    public GuildPlayers(Player p, GuildRanks gr){
+    private String elementalGuildName;
+
+    public GuildPlayers(Player p, GuildRanks guildRanks, String elementalGuildName){
         this.player = p;
-        this.guildRanks = gr;
+        this.guildRanks = guildRanks;
+        this.elementalGuildName = elementalGuildName;
+    }
+
+    public GuildPlayers(Player player) {
+        this.player = player;
     }
 
     public Player getPlayer(){
         return player;
     }
 
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
     public GuildRanks getGuildRanks(){
         return guildRanks;
     }
 
-    public void setGuildRanks(GuildRanks gr){
-        this.guildRanks = gr;
+    public void setGuildRanks(GuildRanks guildRanks){
+        this.guildRanks = guildRanks;
+    }
+
+    public String getElementalGuildName() {
+        return elementalGuildName;
+    }
+
+    public void setElementalGuildName(String elementalGuildName) {
+        this.elementalGuildName = elementalGuildName;
+    }
+
+    @Override
+    public String toString() {
+        return "GuildPlayers{" +
+                "player=" + player +
+//                ", guildRanks=" + guildRanks +
+                ", elementalGuildName='" + elementalGuildName + '\'' +
+                '}';
     }
 }

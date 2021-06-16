@@ -11,7 +11,7 @@ public class GuildManager{
 
     public static void createGuild(String name, Player p){
         ElementalGuild g = new ElementalGuild(name, "Nothing");
-        g.addPlayer(p, GuildRanks.ADMIN);
+        g.addPlayer(p, GuildRanks.ADMIN, name);
         guilds.add(g);
     }
 }

@@ -9,7 +9,7 @@ import java.util.UUID;
 public class ElementalGuild {
 
     private String name, desc;
-    private Map<UUID, GuildPlayers> players = new HashMap<UUID, GuildPlayers>();
+    private final Map<UUID, GuildPlayers> players = new HashMap<>();
 
     public ElementalGuild(String name, String description){
         this.name = name;
@@ -44,8 +44,8 @@ public class ElementalGuild {
         return players.get(p.getUniqueId());
     }
 
-    public void addPlayer(Player p, GuildRanks gr){
-        GuildPlayers gp = new GuildPlayers(p, gr);
-        players.put(p.getUniqueId(), gp);
+    public void addPlayer(Player player, GuildRanks guildRanks, String elementalGuildName){
+        GuildPlayers gp = new GuildPlayers(player, guildRanks, elementalGuildName);
+        players.put(player.getUniqueId(), gp);
     }
 }

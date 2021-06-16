@@ -1,28 +1,24 @@
 package me.kasturez.elementalwar.guild.landClaim;
 
-import me.kasturez.elementalwar.guild.utils.ElementalGuild;
-import org.bukkit.plugin.java.JavaPlugin;
-
 import java.util.HashMap;
 
 
-public class LandClaim extends JavaPlugin {
-    private HashMap<String, ElementalGuild> chunks;
+public class LandClaim {
+    private final HashMap<String, String> chunks;
 
-    @Override
-    public void onEnable() {
-        this.chunks = new HashMap<>();
+    public LandClaim(HashMap<String, String> chunks){
+        this.chunks = chunks;
     }
 
-    public void addChunk(String chunk, ElementalGuild guild){
-        chunks.put(chunk,guild);
+    public void addChunk(String chunk, String guildName){
+        chunks.put(chunk, guildName);
     }
 
     public boolean isClaimed(String chunk){
         return chunks.containsKey(chunk);
     }
 
-    public ElementalGuild getGuild(String chunk){
+    public String getGuild(String chunk){
         return chunks.get(chunk);
     }
 }
