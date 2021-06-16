@@ -25,7 +25,7 @@ public class LandClaimEvent implements Listener {
     public void onInteract(PlayerInteractEvent event){
         if (event.getClickedBlock() != null){
             Chunk chunk = event.getClickedBlock().getChunk();
-            String chunkID = chunk.getX() + "." + chunk.getZ();
+            String chunkID = chunk.getX() + "," + chunk.getZ();
 
             if (landClaim.isClaimed(chunkID)){
                 UUID uuid = event.getPlayer().getUniqueId();

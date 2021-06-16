@@ -21,10 +21,10 @@ public class Main extends JavaPlugin implements Listener {
         LandClaim landClaim = new LandClaim(new HashMap<>());
         PlayerManager playerManager = new PlayerManager(new HashMap<>());
         getCommand("kits").setExecutor(new ElementalKit());
-        getCommand("guild").setExecutor(new GuildCMD(this, landClaim, playerManager));
+        getCommand("guild").setExecutor(new GuildCMD(landClaim, playerManager));
         getServer().getPluginManager().registerEvents(new InventoryEvent(this), this);
         getServer().getPluginManager().registerEvents(new LandClaimEvent(landClaim, this, playerManager), this);
-        getServer().getPluginManager().registerEvents(new RegisterGuildPlayerEvent(this, playerManager), this);
+        getServer().getPluginManager().registerEvents(new RegisterGuildPlayerEvent( playerManager), this);
     }
 
     @Override

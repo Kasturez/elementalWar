@@ -2,6 +2,7 @@ package me.kasturez.elementalwar.guild.utils;
 
 import org.bukkit.entity.Player;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -9,11 +10,25 @@ import java.util.UUID;
 public class ElementalGuild {
 
     private String name, desc;
-    private final Map<UUID, GuildPlayers> players = new HashMap<>();
+    private final ArrayList<GuildPlayer> guildPlayers = new ArrayList<>();
+    private int fire, ice, air, earth, wood;
 
     public ElementalGuild(String name, String description){
         this.name = name;
         this.desc = description;
+    }
+
+    public void addPlayer(GuildPlayer guildPlayer, GuildRanks guildRanks, String elementalGuildName){
+        guildPlayers.add(guildPlayer);
+        guildPlayer.setGuildRanks(guildRanks);
+        guildPlayer.setElementalGuildName(elementalGuildName);
+    }
+
+    @Override
+    public String toString() {
+        return "ElementalGuild{" +
+                "name='" + name + '\'' +
+                '}';
     }
 
     public String getName(){
@@ -32,20 +47,47 @@ public class ElementalGuild {
         this.desc = desc;
     }
 
-    public Map<UUID, GuildPlayers> getPlayers(){
-        return players;
+    public ArrayList<GuildPlayer> getGuildPlayers() {
+        return guildPlayers;
     }
 
-    public boolean isPlayerInGuild(Player p){
-        return players.containsKey(p.getUniqueId());
+    public int getFire() {
+        return fire;
     }
 
-    public GuildPlayers getGuildPlayers(Player p){
-        return players.get(p.getUniqueId());
+    public void setFire(int fire) {
+        this.fire = fire;
     }
 
-    public void addPlayer(Player player, GuildRanks guildRanks, String elementalGuildName){
-        GuildPlayers gp = new GuildPlayers(player, guildRanks, elementalGuildName);
-        players.put(player.getUniqueId(), gp);
+    public int getIce() {
+        return ice;
+    }
+
+    public void setIce(int ice) {
+        this.ice = ice;
+    }
+
+    public int getAir() {
+        return air;
+    }
+
+    public void setAir(int air) {
+        this.air = air;
+    }
+
+    public int getEarth() {
+        return earth;
+    }
+
+    public void setEarth(int earth) {
+        this.earth = earth;
+    }
+
+    public int getWood() {
+        return wood;
+    }
+
+    public void setWood(int wood) {
+        this.wood = wood;
     }
 }
