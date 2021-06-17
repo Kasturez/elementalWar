@@ -3,15 +3,16 @@ package me.kasturez.elementalwar.guild.utils;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class GuildManager{
 
-    private List<ElementalGuild> guilds = new ArrayList<ElementalGuild>();
+    private Player p;
+    private static ArrayList<ElementalGuild> guilds = new ArrayList<ElementalGuild>();
 
-    public void createGuild(String name, Player p){
+    //Make functions working
+    public static void createGuild(String name, GuildPlayers gp){
         ElementalGuild g = new ElementalGuild(name, "Nothing");
-        g.addPlayer(p, GuildRanks.ADMIN);
+        g.addPlayer(gp, GuildRanks.ADMIN);
         guilds.add(g);
     }
 }

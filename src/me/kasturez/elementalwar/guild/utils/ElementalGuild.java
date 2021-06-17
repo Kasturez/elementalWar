@@ -2,46 +2,40 @@ package me.kasturez.elementalwar.guild.utils;
 
 import org.bukkit.entity.Player;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.ArrayList;
 
 public class ElementalGuild {
 
     private String name, desc;
-    private Map<UUID, GuildPlayers> players = new HashMap<UUID, GuildPlayers>();
+    private ArrayList<GuildPlayers> guildPlayers = new ArrayList<GuildPlayers>();
 
-    public ElementalGuild(String name, String description){
+    public ElementalGuild(String name, String description) {
         this.name = name;
         this.desc = description;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
 
-    public String getDesc(){
+    public String getDesc() {
         return desc;
     }
 
-    public void setDesc(String desc){
+    public void setDesc(String desc) {
         this.desc = desc;
     }
 
-    public Map<UUID, GuildPlayers> getPlayers(){
-        return players;
+    public ArrayList<GuildPlayers> getPlayers() {
+        return guildPlayers;
     }
 
-    public GuildPlayers getGuildPlayers(Player p){
-        return players.get(p.getUniqueId());
-    }
+    public void addPlayer(GuildPlayers gp, GuildRanks gr) {
+        guildPlayers.add(gp);
 
-    public void addPlayer(Player p, GuildRanks gr){
-        GuildPlayers gp = new GuildPlayers(p, gr);
-        players.put(p.getUniqueId(), gp);
     }
 }

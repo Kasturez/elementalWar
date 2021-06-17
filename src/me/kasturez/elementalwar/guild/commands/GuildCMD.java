@@ -1,9 +1,7 @@
 package me.kasturez.elementalwar.guild.commands;
 
 import me.kasturez.elementalwar.Main;
-import me.kasturez.elementalwar.guild.utils.ChatUtils;
-import me.kasturez.elementalwar.guild.utils.GuildPlayers;
-import me.kasturez.elementalwar.guild.utils.PlayerManager;
+import me.kasturez.elementalwar.guild.utils.*;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -19,9 +17,6 @@ public class GuildCMD implements CommandExecutor {
         this.plugin = plugin;
     }
 
-    /*public void guild(Main main){
-        plugin = main;
-    }*/
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -32,21 +27,35 @@ public class GuildCMD implements CommandExecutor {
                 return true;
             }
             // sender is a player
-            if(args.length == 0){
+            Player p = (Player) sender;
+            GuildPlayers gp = PlayerManager.getGPlayer(p.getUniqueId());
+
+            //guild info
+            if (args.length == 0) {
                 sender.sendMessage("guild info");
                 return true;
             }
 
-            if(args[0].equalsIgnoreCase("create")){
-                sender.sendMessage("creating guild");
+            //Creating a guild
+            if (args[0].equalsIgnoreCase("create")) {
+                if(gp)
+                GuildManager.createGuild(args[1],gp);
+                sender.sendMessage("U r the admin of " + args[1]);
+
                 return true;
             }
-            if(args[0].equalsIgnoreCase("invite")){
-                sender.sendMessage("inviting a player");
+
+            //Inviting a player to a guild
+            if (args[0].equalsIgnoreCase("invite")) {
+
                 Player invitedPlayer = Bukkit.getPlayer(args[1]);
                 GuildPlayers invitedGPlayer = PlayerManager.getGPlayer(invitedPlayer.getUniqueId());
+                sender.sendMessage("You've invited " + invitedPlayer + "to ur guild");
+                invitedPlayer.sendMessage("U'r being invited to ");
                 return true;
             }
+
+
         }
         return false;
     }

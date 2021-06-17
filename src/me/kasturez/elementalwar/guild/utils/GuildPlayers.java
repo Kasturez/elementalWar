@@ -5,9 +5,9 @@ import org.bukkit.entity.Player;
 public class GuildPlayers {
 
     private Player player;
-
     private GuildRanks guildRanks;
 
+    //Players in Guild and Player Rank
     public GuildPlayers(Player p, GuildRanks gr){
         this.player = p;
         this.guildRanks = gr;
