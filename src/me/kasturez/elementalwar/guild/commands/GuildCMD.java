@@ -1,11 +1,8 @@
 package me.kasturez.elementalwar.guild.commands;
 
-import me.kasturez.elementalwar.Main;
 import me.kasturez.elementalwar.guild.utils.*;
 import org.bukkit.Bukkit;
 import me.kasturez.elementalwar.guild.landClaim.LandClaim;
-import me.kasturez.elementalwar.guild.utils.*;
-import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -17,13 +14,10 @@ import java.util.UUID;
 public class GuildCMD implements CommandExecutor {
 
     private final LandClaim landClaim;
-    private final PlayerManager playerManager;
 
-    public GuildCMD(LandClaim landClaim, PlayerManager playerManager) {
+    public GuildCMD(LandClaim landClaim) {
         this.landClaim = landClaim;
-        this.playerManager = playerManager;
     }
-
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -35,9 +29,9 @@ public class GuildCMD implements CommandExecutor {
             }
 
             // sender is a player
-            Player p = (Player) sender;
+            Player player = (Player) sender;
             UUID uuid = player.getUniqueId();
-            GuildPlayer gp = PlayerManager.getGPlayer(p.getUniqueId());
+            GuildPlayer guildPlayer = PlayerManager.getGPlayer(player.getUniqueId());
 
             //guild info
             if (args.length == 0) {
@@ -62,7 +56,7 @@ public class GuildCMD implements CommandExecutor {
                     player.sendMessage("can't find this player");
                     return true;
                 }
-                GuildPlayer guildPlayerBeingPromote = playerManager.getGPlayer(player1.getUniqueId());
+                GuildPlayer guildPlayerBeingPromote = PlayerManager.getGPlayer(player1.getUniqueId());
                 if (!(guildPlayerBeingPromote.getElementalGuildName().equalsIgnoreCase(guildPlayer.getElementalGuildName()))) {
                     player.sendMessage("you can only promote player from your guild");
                     return true;
@@ -82,7 +76,7 @@ public class GuildCMD implements CommandExecutor {
                     player.sendMessage("can't find this player");
                     return true;
                 }
-                GuildPlayer guildPlayerBeingPromote = playerManager.getGPlayer(player1.getUniqueId());
+                GuildPlayer guildPlayerBeingPromote = PlayerManager.getGPlayer(player1.getUniqueId());
                 if (!(guildPlayerBeingPromote.getElementalGuildName().equalsIgnoreCase(guildPlayer.getElementalGuildName()))) {
                     player.sendMessage("you can only demote player from your guild");
                     return true;
@@ -107,23 +101,13 @@ public class GuildCMD implements CommandExecutor {
                     return true;
                 }
                 GuildManager.createGuild(args[1], guildPlayer);
-                playerManager.getGPlayer(uuid).setElementalGuildName(args[1]);
+                PlayerManager.getGPlayer(uuid).setElementalGuildName(args[1]);
                 sender.sendMessage("created guild with name: " + args[1]);
-                return true;
-            }
-
-            //Creating a guild
-            if (args[0].equalsIgnoreCase("create")) {
-                if(gp)
-                GuildManager.createGuild(args[1],gp);
-                sender.sendMessage("U r the admin of " + args[1]);
-
                 return true;
             }
 
             //Inviting a player to a guild
             if (args[0].equalsIgnoreCase("invite")) {
-
                 Player invitedPlayer = Bukkit.getPlayer(args[1]);
                 GuildPlayer invitedGPlayer = PlayerManager.getGPlayer(invitedPlayer.getUniqueId());
                 sender.sendMessage("You've invited " + invitedPlayer + "to ur guild");
@@ -144,11 +128,6 @@ public class GuildCMD implements CommandExecutor {
                 return true;
             }
 
-            if (args[0].equalsIgnoreCase("invite")) {
-                sender.sendMessage("inviting a player");
-                return true;
-            }
-
             //done
             if (args[0].equalsIgnoreCase("leave")) {
                 GuildManager.findElementalGuildByName(guildPlayer.getElementalGuildName()).removePlayer(guildPlayer);
@@ -161,7 +140,7 @@ public class GuildCMD implements CommandExecutor {
                     player.sendMessage("cant find player");
                     return true;
                 }
-                GuildPlayer guildPlayerBeingKick = playerManager.getGPlayer(player1.getUniqueId());
+                GuildPlayer guildPlayerBeingKick = PlayerManager.getGPlayer(player1.getUniqueId());
                 if (!guildPlayer.getElementalGuildName().equalsIgnoreCase(guildPlayerBeingKick.getElementalGuildName())) {
                     player.sendMessage("that player isn't in your guild");
                     return true;

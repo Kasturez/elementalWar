@@ -8,16 +8,10 @@ import org.bukkit.event.player.PlayerJoinEvent;
 
 public class RegisterGuildPlayerEvent implements Listener {
 
-    private final PlayerManager playerManager;
-
-    public RegisterGuildPlayerEvent(PlayerManager playerManager) {
-        this.playerManager = playerManager;
-    }
-
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event){
         Player player = event.getPlayer();
-        playerManager.registerPlayer(player);
-        player.sendMessage(playerManager.getGPlayer(player.getUniqueId()).toString());
+        PlayerManager.registerPlayer(player);
+        player.sendMessage(PlayerManager.getGPlayer(player.getUniqueId()).toString());
     }
 }

@@ -13,12 +13,10 @@ import java.util.UUID;
 public class LandClaimEvent implements Listener {
     private final LandClaim landClaim;
     private final Main main;
-    private final PlayerManager playerManager;
 
-    public LandClaimEvent(LandClaim landClaim, Main main, PlayerManager playerManager) {
+    public LandClaimEvent(LandClaim landClaim, Main main) {
         this.landClaim = landClaim;
         this.main = main;
-        this.playerManager = playerManager;
     }
 
     @EventHandler
@@ -29,7 +27,7 @@ public class LandClaimEvent implements Listener {
 
             if (landClaim.isClaimed(chunkID)){
                 UUID uuid = event.getPlayer().getUniqueId();
-                if (!playerManager.getGPlayer(uuid).getElementalGuildName().equalsIgnoreCase(landClaim.getGuild(chunkID))){
+                if (!PlayerManager.getGPlayer(uuid).getElementalGuildName().equalsIgnoreCase(landClaim.getGuild(chunkID))){
                     event.setCancelled(true);
                     event.getPlayer().sendMessage("this chunk is claimed by: " + landClaim.getGuild(chunkID));
                 }
