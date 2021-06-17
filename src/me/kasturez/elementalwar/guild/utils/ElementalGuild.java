@@ -24,6 +24,11 @@ public class ElementalGuild {
         guildPlayer.setElementalGuildName(elementalGuildName);
     }
 
+    public void removePlayer(GuildPlayer guildPlayer){
+        guildPlayers.remove(guildPlayer);
+        guildPlayer.setElementalGuildName("wild");
+    }
+
     @Override
     public String toString() {
         return "ElementalGuild{" +
