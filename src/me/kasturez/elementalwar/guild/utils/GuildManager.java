@@ -1,18 +1,31 @@
 package me.kasturez.elementalwar.guild.utils;
 
-import org.bukkit.entity.Player;
-
 import java.util.ArrayList;
 
 public class GuildManager{
 
-    private Player p;
-    private static ArrayList<ElementalGuild> guilds = new ArrayList<ElementalGuild>();
+    private static final ArrayList<ElementalGuild> guilds = new ArrayList();
 
-    //Make functions working
-    public static void createGuild(String name, GuildPlayers gp){
-        ElementalGuild g = new ElementalGuild(name, "Nothing");
-        g.addPlayer(gp, GuildRanks.ADMIN);
-        guilds.add(g);
+    public static void createGuild(String guildName, GuildPlayer guildPlayer){
+        ElementalGuild guild = new ElementalGuild(guildName, "Nothing");
+        guild.addPlayer(guildPlayer, GuildRanks.ADMIN, guildName);
+        guilds.add(guild);
+    }
+
+    public static void disbandGuild(String guildName) {
+        guilds.remove(findElementalGuildByName(guildName));
+    }
+
+    public static ElementalGuild findElementalGuildByName(String guildName){
+        for (ElementalGuild elementalGuild : guilds) {
+            if (elementalGuild.getName().equalsIgnoreCase(guildName)){
+                return elementalGuild;
+            }
+        }
+        return null;
+    }
+
+    public static ArrayList<ElementalGuild> getGuilds() {
+        return guilds;
     }
 }

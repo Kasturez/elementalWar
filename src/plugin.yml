@@ -1,10 +1,12 @@
 main: me.kasturez.elementalwar.Main
-name: elementalwarkit
+name: elementalwar
 version: 1.0
 author: kasturez
 api-version: 1.16
 
 commands:
+  kits:
+    usage: "/kits to open kits menu"
   guild:
     usage: "/g create [name]"
     aliases:
