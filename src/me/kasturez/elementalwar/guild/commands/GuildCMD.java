@@ -1,6 +1,5 @@
 package me.kasturez.elementalwar.guild.commands;
 
-import me.kasturez.elementalwar.Main;
 import me.kasturez.elementalwar.guild.landClaim.LandClaim;
 import me.kasturez.elementalwar.guild.utils.*;
 import org.bukkit.Bukkit;
@@ -14,14 +13,6 @@ import java.util.UUID;
 
 public class GuildCMD implements CommandExecutor {
 
-    private final LandClaim landClaim;
-    private final PlayerManager playerManager;
-
-    public GuildCMD(LandClaim landClaim, PlayerManager playerManager) {
-        this.landClaim = landClaim;
-        this.playerManager = playerManager;
-    }
-
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (cmd.getName().equalsIgnoreCase("guild")) {
@@ -34,10 +25,10 @@ public class GuildCMD implements CommandExecutor {
             // sender is a player
             Player player = (Player) sender;
             UUID uuid = player.getUniqueId();
-            GuildPlayer guildPlayer = playerManager.getGPlayer(uuid);
+            GuildPlayer guildPlayer = PlayerManager.getGPlayer(uuid);
             if (args.length == 0) {
                 sender.sendMessage("guild info");
-                landClaim.showAllClaimedChunk(player);
+                LandClaim.showAllClaimedChunk(player);
                 player.sendMessage(guildPlayer.toString());
                 player.sendMessage(GuildManager.getGuilds().toString());
                 return true;
@@ -57,7 +48,7 @@ public class GuildCMD implements CommandExecutor {
                     player.sendMessage("can't find this player");
                     return true;
                 }
-                GuildPlayer guildPlayerBeingPromote = playerManager.getGPlayer(player1.getUniqueId());
+                GuildPlayer guildPlayerBeingPromote = PlayerManager.getGPlayer(player1.getUniqueId());
                 if (!(guildPlayerBeingPromote.getElementalGuildName().equalsIgnoreCase(guildPlayer.getElementalGuildName()))) {
                     player.sendMessage("you can only promote player from your guild");
                     return true;
@@ -77,7 +68,7 @@ public class GuildCMD implements CommandExecutor {
                     player.sendMessage("can't find this player");
                     return true;
                 }
-                GuildPlayer guildPlayerBeingPromote = playerManager.getGPlayer(player1.getUniqueId());
+                GuildPlayer guildPlayerBeingPromote = PlayerManager.getGPlayer(player1.getUniqueId());
                 if (!(guildPlayerBeingPromote.getElementalGuildName().equalsIgnoreCase(guildPlayer.getElementalGuildName()))) {
                     player.sendMessage("you can only demote player from your guild");
                     return true;
@@ -102,7 +93,7 @@ public class GuildCMD implements CommandExecutor {
                     return true;
                 }
                 GuildManager.createGuild(args[1], guildPlayer);
-                playerManager.getGPlayer(uuid).setElementalGuildName(args[1]);
+                PlayerManager.getGPlayer(uuid).setElementalGuildName(args[1]);
                 sender.sendMessage("created guild with name: " + args[1]);
                 return true;
             }
@@ -111,11 +102,11 @@ public class GuildCMD implements CommandExecutor {
             if (args[0].equalsIgnoreCase("claim")) {
                 Chunk chunk = player.getLocation().getChunk();
                 String chunkID = chunk.getX() + "," + chunk.getZ();
-                if (landClaim.isClaimed(chunkID)) {
+                if (LandClaim.isClaimed(chunkID)) {
                     player.sendMessage("this chunk is already claimed!");
                     return true;
                 }
-                landClaim.addChunk(chunkID, guildPlayer.getElementalGuildName());
+                LandClaim.addChunk(chunkID, guildPlayer.getElementalGuildName());
                 return true;
             }
 
@@ -136,7 +127,7 @@ public class GuildCMD implements CommandExecutor {
                     player.sendMessage("cant find player");
                     return true;
                 }
-                GuildPlayer guildPlayerBeingKick = playerManager.getGPlayer(player1.getUniqueId());
+                GuildPlayer guildPlayerBeingKick = PlayerManager.getGPlayer(player1.getUniqueId());
                 if (!guildPlayer.getElementalGuildName().equalsIgnoreCase(guildPlayerBeingKick.getElementalGuildName())) {
                     player.sendMessage("that player isn't in your guild");
                     return true;
@@ -152,7 +143,7 @@ public class GuildCMD implements CommandExecutor {
                 }
                 String elementalGuildName = guildPlayer.getElementalGuildName();
                 GuildManager.disbandGuild(elementalGuildName);
-                landClaim.removeChunkByValue(elementalGuildName);
+                LandClaim.removeChunkByValue(elementalGuildName);
                 guildPlayer.setElementalGuildName("wild");
                 return true;
             }
@@ -160,15 +151,15 @@ public class GuildCMD implements CommandExecutor {
             if (args[0].equalsIgnoreCase("unclaim")) {
                 Chunk chunk = player.getLocation().getChunk();
                 String chunkID = chunk.getX() + "," + chunk.getZ();
-                if (!landClaim.isClaimed(chunkID)) {
+                if (!LandClaim.isClaimed(chunkID)) {
                     player.sendMessage("this chunk isn't claimed!");
                     return true;
                 }
-                if (!landClaim.getGuild(chunkID).equalsIgnoreCase(guildPlayer.getElementalGuildName())) {
+                if (!LandClaim.getGuild(chunkID).equalsIgnoreCase(guildPlayer.getElementalGuildName())) {
                     player.sendMessage("you can't unclaim chunks your guild don't own");
                     return true;
                 }
-                landClaim.removeChunkByKey(chunkID);
+                LandClaim.removeChunkByKey(chunkID);
                 return true;
             }
         }

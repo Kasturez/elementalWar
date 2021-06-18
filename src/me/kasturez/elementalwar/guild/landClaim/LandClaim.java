@@ -6,34 +6,30 @@ import java.util.HashMap;
 
 
 public class LandClaim {
-    private final HashMap<String, String> chunks;
+    private static final HashMap<String, String> chunks = new HashMap<>();
 
-    public LandClaim(HashMap<String, String> chunks) {
-        this.chunks = chunks;
-    }
-
-    public void addChunk(String chunk, String guildName) {
+    public static void addChunk(String chunk, String guildName) {
         if (guildName.isEmpty()) return;
         chunks.put(chunk, guildName);
     }
 
-    public boolean isClaimed(String chunk) {
+    public static boolean isClaimed(String chunk) {
         return chunks.containsKey(chunk);
     }
 
-    public String getGuild(String chunk) {
+    public static String getGuild(String chunk) {
         return chunks.get(chunk);
     }
 
-    public void removeChunkByValue(String guildName) {
+    public static void removeChunkByValue(String guildName) {
         chunks.values().remove(guildName);
     }
 
-    public void removeChunkByKey(String chunk) {
+    public static void removeChunkByKey(String chunk) {
         chunks.remove(chunk);
     }
 
-    public void showAllClaimedChunk(Player player) {
+    public static void showAllClaimedChunk(Player player) {
         player.sendMessage(chunks.toString());
     }
 }

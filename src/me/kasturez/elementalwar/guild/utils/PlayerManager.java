@@ -6,18 +6,14 @@ import java.util.HashMap;
 import java.util.UUID;
 
 public class PlayerManager {
-    private final HashMap<UUID, GuildPlayer> playersHashMap;
+    private static final HashMap<UUID, GuildPlayer> playersHashMap = new HashMap<>();
 
-    public PlayerManager(HashMap<UUID, GuildPlayer> playersHashMap) {
-        this.playersHashMap = playersHashMap;
-    }
-
-    public void registerPlayer(Player player) {
+    public static void registerPlayer(Player player) {
         if (playersHashMap.containsKey(player.getUniqueId())) return;
         playersHashMap.put(player.getUniqueId(), new GuildPlayer(player));
     }
 
-    public GuildPlayer getGPlayer(UUID uuid){
+    public static GuildPlayer getGPlayer(UUID uuid){
         return playersHashMap.get(uuid);
     }
 }
