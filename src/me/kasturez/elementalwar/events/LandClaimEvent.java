@@ -12,12 +12,10 @@ import java.util.UUID;
 
 public class LandClaimEvent implements Listener {
     private final LandClaim landClaim;
-    private final Main main;
     private final PlayerManager playerManager;
 
-    public LandClaimEvent(LandClaim landClaim, Main main, PlayerManager playerManager) {
+    public LandClaimEvent(LandClaim landClaim, PlayerManager playerManager) {
         this.landClaim = landClaim;
-        this.main = main;
         this.playerManager = playerManager;
     }
 

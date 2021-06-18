@@ -16,12 +16,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class InventoryEvent implements Listener {
 
-    private final Main plugin;
-
-    public InventoryEvent(Main plugin) {
-        this.plugin = plugin;
-    }
-
     //Traveler kit initializing
     private static Inventory initTravelerKits() {
         Inventory inv = Bukkit.createInventory(null, 9, "Traveler");

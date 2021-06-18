@@ -22,8 +22,8 @@ public class Main extends JavaPlugin implements Listener {
         PlayerManager playerManager = new PlayerManager(new HashMap<>());
         getCommand("kits").setExecutor(new ElementalKit());
         getCommand("guild").setExecutor(new GuildCMD(landClaim, playerManager));
-        getServer().getPluginManager().registerEvents(new InventoryEvent(this), this);
-        getServer().getPluginManager().registerEvents(new LandClaimEvent(landClaim, this, playerManager), this);
+        getServer().getPluginManager().registerEvents(new InventoryEvent(), this);
+        getServer().getPluginManager().registerEvents(new LandClaimEvent(landClaim, playerManager), this);
         getServer().getPluginManager().registerEvents(new RegisterGuildPlayerEvent( playerManager), this);
     }
 
