@@ -1,5 +1,6 @@
 package me.kasturez.elementalwar.guild.commands;
 
+import me.kasturez.elementalwar.GUI.GuildGUI;
 import me.kasturez.elementalwar.guild.landClaim.LandClaim;
 import me.kasturez.elementalwar.guild.utils.*;
 import org.bukkit.Bukkit;
@@ -32,6 +33,10 @@ public class GuildCMD implements CommandExecutor {
                 player.sendMessage(guildPlayer.toString());
                 player.sendMessage(GuildManager.getGuilds().toString());
                 return true;
+            }
+
+            if (args[0].equalsIgnoreCase("info")) {
+                player.openInventory(GuildGUI.openGuildGUI(GuildManager.findElementalGuildByName(guildPlayer.getElementalGuildName())));
             }
 
             //done
