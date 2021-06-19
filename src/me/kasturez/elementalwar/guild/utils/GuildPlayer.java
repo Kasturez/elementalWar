@@ -10,18 +10,16 @@ public class GuildPlayer {
 
     private String elementalGuildName = "wild";
 
-
-
     public GuildPlayer(Player player) {
         this.player = player;
     }
-
 
     @Override
     public String toString() {
         return "elementalGuildName='" + elementalGuildName + '\'' + '}';
     }
 
+    //get set Player
     public Player getPlayer() {
         return player;
     }
@@ -30,6 +28,7 @@ public class GuildPlayer {
         this.player = player;
     }
 
+    //get set GuildRanks
     public GuildRanks getGuildRanks() {
         return guildRanks;
     }
@@ -38,6 +37,7 @@ public class GuildPlayer {
         this.guildRanks = guildRanks;
     }
 
+    //get set ElementalGuildName
     public String getElementalGuildName() {
         return elementalGuildName;
     }

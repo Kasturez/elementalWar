@@ -1,11 +1,6 @@
 package me.kasturez.elementalwar.guild.utils;
 
-import org.bukkit.entity.Player;
-
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
 
 public class ElementalGuild {
 
@@ -13,7 +8,7 @@ public class ElementalGuild {
     private final ArrayList<GuildPlayer> guildPlayers = new ArrayList<>();
     private int fire, ice, air, earth, wood;
 
-    public ElementalGuild(String name, String description){
+    public ElementalGuild(String name, String description) {
         this.name = name;
         this.desc = description;
     }
@@ -40,15 +35,15 @@ public class ElementalGuild {
         return name;
     }
 
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
 
-    public String getDesc(){
+    public String getDesc() {
         return desc;
     }
 
-    public void setDesc(String desc){
+    public void setDesc(String desc) {
         this.desc = desc;
     }
 
