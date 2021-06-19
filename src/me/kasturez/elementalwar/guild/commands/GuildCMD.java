@@ -28,6 +28,7 @@ public class GuildCMD implements CommandExecutor {
             Player player = (Player) sender;
             UUID uuid = player.getUniqueId();
             GuildPlayer guildPlayer = PlayerManager.getGPlayer(uuid);
+            ElementalGuild elementalGuild = GuildManager.findElementalGuildByName(guildPlayer.getElementalGuildName());
             UpdateGuildEvent updateGuildEvent = new UpdateGuildEvent(player);
 
             //guild info
