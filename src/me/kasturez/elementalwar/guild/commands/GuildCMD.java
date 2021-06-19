@@ -35,16 +35,16 @@ public class GuildCMD implements CommandExecutor {
                 return true;
             }
 
-            if (args[0].equalsIgnoreCase("info")) {
-                player.openInventory(GuildGUI.openGuildGUI(GuildManager.findElementalGuildByName(guildPlayer.getElementalGuildName())));
-            }
-
             //done
             if (!args[0].equalsIgnoreCase("create")) {
                 if (guildPlayer.getElementalGuildName().equalsIgnoreCase("wild")){
                     player.sendMessage("please do /guild create first!");
                     return true;
                 }
+            }
+
+            if (args[0].equalsIgnoreCase("info")) {
+                player.openInventory(GuildGUI.openGuildGUI(GuildManager.findElementalGuildByName(guildPlayer.getElementalGuildName())));
             }
 
             if (args[0].equalsIgnoreCase("promote")) {

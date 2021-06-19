@@ -1,4 +1,4 @@
-package me.kasturez.elementalwar.events;
+package me.kasturez.elementalwar.eventHandlers;
 
 import me.kasturez.elementalwar.guild.landClaim.LandClaim;
 import me.kasturez.elementalwar.guild.utils.PlayerManager;

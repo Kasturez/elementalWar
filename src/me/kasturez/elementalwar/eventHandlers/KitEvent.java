@@ -1,6 +1,5 @@
-package me.kasturez.elementalwar.events;
+package me.kasturez.elementalwar.eventHandlers;
 
-import me.kasturez.elementalwar.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -14,7 +13,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-public class InventoryEvent implements Listener {
+public class KitEvent implements Listener {
 
     //Traveler kit initializing
     private static Inventory initTravelerKits() {

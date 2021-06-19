@@ -13,62 +13,66 @@ import java.util.List;
 
 public class GuildGUI {
     public static Inventory openGuildGUI(ElementalGuild elementalGuild){
-        //3 - 7
-        Inventory inventory = Bukkit.createInventory(null, 63, ChatColor.BLACK + "Guild Menu");
+        Inventory inventory = Bukkit.createInventory(null, 45, ChatColor.BLACK + "GuildMenu");
         //display wood elemental
         ItemStack itemStack = new ItemStack(Material.GREEN_TERRACOTTA);
         ItemMeta itemMeta = itemStack.getItemMeta();
-        itemMeta.setDisplayName("WOOD ELEMENTAL");
+        itemMeta.setDisplayName(ChatColor.DARK_GREEN + "WOOD ELEMENTAL");
         List<String> lore = new ArrayList<>();
         lore.add("");
+        lore.add(ChatColor.DARK_GREEN + "Guild's wood elemental in stored:");
         lore.add(ChatColor.DARK_GREEN + Integer.toString(elementalGuild.getWood()));
         itemMeta.setLore(lore);
         itemStack.setItemMeta(itemMeta);
-        inventory.setItem(3, itemStack);
+        inventory.setItem(11, itemStack);
         lore.clear();
 
         //display earth elemental
         itemStack.setType(Material.BROWN_TERRACOTTA);
         itemMeta = itemStack.getItemMeta();
-        itemMeta.setDisplayName("EARTH ELEMENTAL");
+        itemMeta.setDisplayName(ChatColor.YELLOW + "EARTH ELEMENTAL");
         lore.add("");
-        lore.add(ChatColor.BLACK + Integer.toString(elementalGuild.getEarth()));
+        lore.add(ChatColor.YELLOW + "Guild's earth elemental in stored");
+        lore.add(ChatColor.YELLOW + Integer.toString(elementalGuild.getEarth()));
         itemMeta.setLore(lore);
         itemStack.setItemMeta(itemMeta);
-        inventory.setItem(4, itemStack);
+        inventory.setItem(12, itemStack);
         lore.clear();
 
         //display air elemental
         itemStack.setType(Material.WHITE_TERRACOTTA);
         itemMeta = itemStack.getItemMeta();
-        itemMeta.setDisplayName("WHITE ELEMENTAL");
+        itemMeta.setDisplayName(ChatColor.GRAY + "AIR ELEMENTAL");
         lore.add("");
-        lore.add(ChatColor.WHITE + Integer.toString(elementalGuild.getAir()));
+        lore.add(ChatColor.GRAY + "Guild's air elemental in stored:");
+        lore.add(ChatColor.GRAY + Integer.toString(elementalGuild.getAir()));
         itemMeta.setLore(lore);
         itemStack.setItemMeta(itemMeta);
-        inventory.setItem(5, itemStack);
+        inventory.setItem(13, itemStack);
         lore.clear();
 
         //display fire elemental
         itemStack.setType(Material.RED_TERRACOTTA);
         itemMeta = itemStack.getItemMeta();
-        itemMeta.setDisplayName("FIRE ELEMENTAL");
+        itemMeta.setDisplayName(ChatColor.DARK_RED + "FIRE ELEMENTAL");
         lore.add("");
-        lore.add(ChatColor.RED + Integer.toString(elementalGuild.getFire()));
+        lore.add(ChatColor.DARK_RED + "Guild's fire elemental in stored:");
+        lore.add(ChatColor.DARK_RED + Integer.toString(elementalGuild.getFire()));
         itemMeta.setLore(lore);
         itemStack.setItemMeta(itemMeta);
-        inventory.setItem(6, itemStack);
+        inventory.setItem(14, itemStack);
         lore.clear();
 
         //display ice elemental
         itemStack.setType(Material.BLUE_TERRACOTTA);
         itemMeta = itemStack.getItemMeta();
-        itemMeta.setDisplayName("ICE ELEMENTAL");
+        itemMeta.setDisplayName(ChatColor.DARK_AQUA + "ICE ELEMENTAL");
         lore.add("");
-        lore.add(ChatColor.BLUE + Integer.toString(elementalGuild.getIce()));
+        lore.add(ChatColor.DARK_AQUA + "Guild's ice elemental in stored:");
+        lore.add(ChatColor.DARK_AQUA + Integer.toString(elementalGuild.getIce()));
         itemMeta.setLore(lore);
         itemStack.setItemMeta(itemMeta);
-        inventory.setItem(7, itemStack);
+        inventory.setItem(15, itemStack);
         lore.clear();
 
         return inventory;
