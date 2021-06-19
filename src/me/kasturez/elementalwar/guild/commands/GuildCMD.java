@@ -37,7 +37,7 @@ public class GuildCMD implements CommandExecutor {
                 player.sendMessage("/g info");
                 player.sendMessage("/g invite");
                 player.sendMessage("/g description");
-                player.sendMessage("/g laneclaimed");
+                player.sendMessage("/g land");
                 player.sendMessage("/g promote");
                 player.sendMessage("/g demote");
                 player.sendMessage("/g leadership");
@@ -162,16 +162,16 @@ public class GuildCMD implements CommandExecutor {
             if (args[0].equalsIgnoreCase("unclaim")) {
                 Chunk chunk = player.getLocation().getChunk();
                 String chunkID = chunk.getX() + "," + chunk.getZ();
-                if (!landClaim.isClaimed(chunkID)) {
+                if (!LandClaim.isClaimed(chunkID)) {
                     player.sendMessage("this chunk isn't claimed!");
                     return true;
                 }
-                if (!landClaim.getGuild(chunkID).equalsIgnoreCase(guildPlayer.getElementalGuildName())) {
+                if (!LandClaim.getGuild(chunkID).equalsIgnoreCase(guildPlayer.getElementalGuildName())) {
                     player.sendMessage("you can't unclaim chunks your guild don't own");
                     return true;
                 }
                 player.sendMessage("You've unclaimed this chunk");
-                landClaim.removeChunkByKey(chunkID);
+                LandClaim.removeChunkByKey(chunkID);
                 return true;
             }
 
