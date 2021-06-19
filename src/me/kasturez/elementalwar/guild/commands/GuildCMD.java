@@ -1,18 +1,16 @@
 package me.kasturez.elementalwar.guild.commands;
 
 import me.kasturez.elementalwar.GUI.GuildGUI;
+import me.kasturez.elementalwar.events.UpdateGuildEvent;
 import me.kasturez.elementalwar.guild.landClaim.LandClaim;
-import com.sun.applet2.preloader.event.ErrorEvent;
 import me.kasturez.elementalwar.guild.utils.*;
 import org.bukkit.Bukkit;
-import me.kasturez.elementalwar.guild.landClaim.LandClaim;
 import org.bukkit.Chunk;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import java.lang.reflect.Member;
 import java.util.UUID;
 
 public class GuildCMD implements CommandExecutor {
@@ -30,6 +28,7 @@ public class GuildCMD implements CommandExecutor {
             Player player = (Player) sender;
             UUID uuid = player.getUniqueId();
             GuildPlayer guildPlayer = PlayerManager.getGPlayer(uuid);
+            UpdateGuildEvent updateGuildEvent = new UpdateGuildEvent(player);
 
             //guild info
             if (args.length == 0) {
@@ -51,11 +50,12 @@ public class GuildCMD implements CommandExecutor {
             //guild info
             if(args[0].equalsIgnoreCase("info")){
                 player.sendMessage(GuildManager.getGuilds().toString());
+                Bukkit.getPluginManager().callEvent(updateGuildEvent);
                 return true;
             }
 
-            if(args[0].equalsIgnoreCase("lane")){
-                landClaim.showAllClaimedChunk(player);
+            if(args[0].equalsIgnoreCase("land")){
+                LandClaim.showAllClaimedChunk(player);
                 return true;
             }
 
@@ -85,6 +85,7 @@ public class GuildCMD implements CommandExecutor {
                 if (guildPlayerBeingPromote.getGuildRanks() == GuildRanks.RECRUIT) {
                     guildPlayerBeingPromote.setGuildRanks(GuildRanks.MEMBER);
                     player.sendMessage("promote successfully");
+                    Bukkit.getPluginManager().callEvent(updateGuildEvent);
                     return true;
                 }
                 player.sendMessage("can't promote player");
@@ -106,6 +107,7 @@ public class GuildCMD implements CommandExecutor {
                 if (guildPlayerBeingPromote.getGuildRanks() == GuildRanks.MEMBER) {
                     guildPlayerBeingPromote.setGuildRanks(GuildRanks.RECRUIT);
                     player.sendMessage("demote successfully");
+                    Bukkit.getPluginManager().callEvent(updateGuildEvent);
                     return true;
                 }
                 player.sendMessage("can't demote player");
@@ -133,6 +135,7 @@ public class GuildCMD implements CommandExecutor {
                 GuildManager.createGuild(args[1], guildPlayer);
                 PlayerManager.getGPlayer(uuid).setElementalGuildName(args[1]);
                 sender.sendMessage("created guild with name: " + args[1]);
+                Bukkit.getPluginManager().callEvent(updateGuildEvent);
                 return true;
             }
 
@@ -142,6 +145,7 @@ public class GuildCMD implements CommandExecutor {
                 GuildPlayer invitedGPlayer = PlayerManager.getGPlayer(invitedPlayer.getUniqueId());
                 sender.sendMessage("You've invited " + invitedPlayer + "to ur guild");
                 invitedPlayer.sendMessage("U'r being invited to ");
+                Bukkit.getPluginManager().callEvent(updateGuildEvent);
                 return true;
             }
 
@@ -155,6 +159,7 @@ public class GuildCMD implements CommandExecutor {
                     return true;
                 }
                 LandClaim.addChunk(chunkID, guildPlayer.getElementalGuildName());
+                Bukkit.getPluginManager().callEvent(updateGuildEvent);
                 return true;
             }
 
@@ -171,6 +176,7 @@ public class GuildCMD implements CommandExecutor {
                     return true;
                 }
                 player.sendMessage("You've unclaimed this chunk");
+                Bukkit.getPluginManager().callEvent(updateGuildEvent);
                 LandClaim.removeChunkByKey(chunkID);
                 return true;
             }
@@ -181,8 +187,9 @@ public class GuildCMD implements CommandExecutor {
                     player.sendMessage("You cant leave your guild as the admin");
                     return true;
                 }
-                player.sendMessage("You've just left this guild");
                 GuildManager.findElementalGuildByName(guildPlayer.getElementalGuildName()).removePlayer(guildPlayer);
+                player.sendMessage("You've just left this guild");
+                Bukkit.getPluginManager().callEvent(updateGuildEvent);
             }
 
             //guild kick [player]
@@ -198,6 +205,7 @@ public class GuildCMD implements CommandExecutor {
                     return true;
                 }
                 GuildManager.findElementalGuildByName(guildPlayerBeingKick.getElementalGuildName()).removePlayer(guildPlayerBeingKick);
+                Bukkit.getPluginManager().callEvent(updateGuildEvent);
             }
 
             //guild disband
@@ -211,6 +219,7 @@ public class GuildCMD implements CommandExecutor {
                 GuildManager.disbandGuild(elementalGuildName);
                 LandClaim.removeChunkByValue(elementalGuildName);
                 guildPlayer.setElementalGuildName("wild");
+                Bukkit.getPluginManager().callEvent(updateGuildEvent);
                 return true;
             }
 
@@ -226,6 +235,7 @@ public class GuildCMD implements CommandExecutor {
                     return true;
                 }
                 LandClaim.removeChunkByKey(chunkID);
+                Bukkit.getPluginManager().callEvent(updateGuildEvent);
                 return true;
             }
         }

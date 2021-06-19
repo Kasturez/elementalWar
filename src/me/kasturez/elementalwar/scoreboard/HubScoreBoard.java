@@ -1,5 +1,6 @@
 package me.kasturez.elementalwar.scoreboard;
 
+import me.kasturez.elementalwar.events.UpdateGuildEvent;
 import me.kasturez.elementalwar.guild.utils.GuildManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -9,10 +10,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.scoreboard.*;
 
-public class hubscoreboard implements Listener {
+public class HubScoreBoard implements Listener {
 
     @EventHandler
-    public void onJoin(PlayerJoinEvent event){
+    public void onJoin(UpdateGuildEvent event){
         createBoard(event.getPlayer());
     }
 
