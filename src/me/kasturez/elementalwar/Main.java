@@ -9,6 +9,7 @@ import me.kasturez.elementalwar.events.LandClaimEvent;
 import me.kasturez.elementalwar.events.RegisterGuildPlayerEvent;
 import me.kasturez.elementalwar.guild.landClaim.LandClaim;
 import me.kasturez.elementalwar.kits.ElementalKit;
+import me.kasturez.elementalwar.scoreboard.hubscoreboard;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -27,6 +28,7 @@ public class Main extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new LandClaimEvent(landClaim,this), this);
         getServer().getPluginManager().registerEvents(new RegisterGuildPlayerEvent(), this);
         getServer().getPluginManager().registerEvents(new DamageEvent(), this);
+        getServer().getPluginManager().registerEvents(new hubscoreboard(),this);
     }
 
     @Override

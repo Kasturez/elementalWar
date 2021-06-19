@@ -8,10 +8,7 @@ commands:
   kits:
     usage: "/kits to open kits menu"
   guild:
-    usage: "/g create [name]"
     aliases:
       - g
   fly:
-
-
 
