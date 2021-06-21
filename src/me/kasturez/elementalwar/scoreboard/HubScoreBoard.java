@@ -12,20 +12,20 @@ import org.bukkit.scoreboard.*;
 public class HubScoreBoard implements Listener {
 
     @EventHandler
-    public void updateGuildScoreBoard(UpdateGuildEvent event){
+    public void updateGuildScoreBoard(UpdateGuildEvent event) {
         createBoard(event.getPlayer());
     }
 
-    public static void createBoard(Player player){
+    public static void createBoard(Player player) {
+
         ScoreboardManager scoreboardManager = Bukkit.getScoreboardManager();
         Scoreboard scoreboard = scoreboardManager.getNewScoreboard();
 
-        if(PlayerManager.getGPlayer(player.getUniqueId()).getElementalGuildName().equalsIgnoreCase("wild")){
+        if (PlayerManager.getGPlayer(player.getUniqueId()).getElementalGuildName().equalsIgnoreCase("wild")) {
             player.setScoreboard(scoreboard);
-            return;
         }
 
-        Objective objective = scoreboard.registerNewObjective("TIn", "Kasture", "--Guild Information--");
+        Objective objective = scoreboard.registerNewObjective("Scoreboard1", "dummy", ChatColor.DARK_PURPLE + "--Guild Information--");
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
 
         //Score
@@ -33,11 +33,12 @@ public class HubScoreBoard implements Listener {
         score3.setScore(3);
         Score score2 = objective.getScore(ChatColor.BLUE + "Your guild is: " + PlayerManager.getGPlayer(player.getUniqueId()).getElementalGuildName());
         score2.setScore(2);
-        Score score1 = objective.getScore(ChatColor.YELLOW + "Your chunk power: " );
+        Score score1 = objective.getScore(ChatColor.YELLOW + "Your chunk power: ");
         score1.setScore(1);
         Score score0 = objective.getScore("Your pussy: ");
         score0.setScore(0);
-        player.setScoreboard(scoreboard);
+
+        //player.setScoreboard(scoreboard);
     }
 
 }

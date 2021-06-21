@@ -1,6 +1,5 @@
 package me.kasturez.elementalwar.events;
 
-import me.kasturez.elementalwar.guild.utils.ElementalGuild;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
