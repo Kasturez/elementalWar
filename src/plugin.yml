@@ -11,4 +11,11 @@ commands:
     aliases:
       - g
   fly:
+    usage: "you can fly"
+  balance:
+    aliases:
+      - bal
+      - money
+      - cash
+    usage: "do '/balance, /bal, /money, /cash' to open your balance"
 
