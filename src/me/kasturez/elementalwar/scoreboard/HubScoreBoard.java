@@ -17,14 +17,8 @@ public class HubScoreBoard implements Listener {
     }
 
     public static void createBoard(Player player) {
-
         ScoreboardManager scoreboardManager = Bukkit.getScoreboardManager();
         Scoreboard scoreboard = scoreboardManager.getNewScoreboard();
-
-        if (PlayerManager.getGPlayer(player.getUniqueId()).getElementalGuildName().equalsIgnoreCase("wild")) {
-            player.setScoreboard(scoreboard);
-        }
-
         Objective objective = scoreboard.registerNewObjective("Scoreboard1", "dummy", ChatColor.DARK_PURPLE + "--Guild Information--");
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
 
@@ -33,12 +27,16 @@ public class HubScoreBoard implements Listener {
         score3.setScore(3);
         Score score2 = objective.getScore(ChatColor.BLUE + "Your guild is: " + PlayerManager.getGPlayer(player.getUniqueId()).getElementalGuildName());
         score2.setScore(2);
-        Score score1 = objective.getScore(ChatColor.YELLOW + "Your chunk power: ");
+        Score score1 = objective.getScore(ChatColor.YELLOW + "Your Balance: ");
         score1.setScore(1);
-        Score score0 = objective.getScore("Your pussy: ");
+        Score score0 = objective.getScore("Your chunk power ");
         score0.setScore(0);
-
-        //player.setScoreboard(scoreboard);
+        if (PlayerManager.getGPlayer(player.getUniqueId()).getElementalGuildName().equalsIgnoreCase("wild")) {
+            player.setScoreboard(scoreboard);
+        }
+        if (!PlayerManager.getGPlayer(player.getUniqueId()).getElementalGuildName().equalsIgnoreCase("wild")) {
+            player.setScoreboard(scoreboard);
+        }
     }
 
 }

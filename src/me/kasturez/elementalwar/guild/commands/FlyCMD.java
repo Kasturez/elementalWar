@@ -1,6 +1,5 @@
 package me.kasturez.elementalwar.guild.commands;
 
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -25,26 +24,26 @@ public class FlyCMD implements CommandExecutor {
                 sender.sendMessage("You r a SERVER!!!");
                 return true;
             }
-            Player p = (Player) sender;
+            Player player = (Player) sender;
 
-            if (!FlyingPlayersList.contains(p)) {
-                setFlyTrue(p);
-            } else if (FlyingPlayersList.contains(p)) {
-                setFlyFalse(p);
+            if (!FlyingPlayersList.contains(player)) {
+                setFlyTrue(player);
+            } else if (FlyingPlayersList.contains(player)) {
+                setFlyFalse(player);
             }
         }
         return false;
     }
 
-    public static void setFlyTrue(Player p) {
-        FlyingPlayersList.add(p);
-        p.setAllowFlight(true);
-        p.sendMessage("Now you can !!!");
+    public static void setFlyTrue(Player player) {
+        FlyingPlayersList.add(player);
+        player.setAllowFlight(true);
+        player.sendMessage("Now you can !!!");
     }
 
-    public static void setFlyFalse(Player p) {
-        FlyingPlayersList.remove(p);
-        p.setAllowFlight(false);
-        p.sendMessage("Turning off !!!");
+    public static void setFlyFalse(Player player) {
+        FlyingPlayersList.remove(player);
+        player.setAllowFlight(false);
+        player.sendMessage("Turning off !!!");
     }
 }

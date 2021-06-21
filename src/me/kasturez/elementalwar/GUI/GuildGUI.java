@@ -4,6 +4,9 @@ import me.kasturez.elementalwar.guild.utils.ElementalGuild;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -11,7 +14,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GuildGUI {
+public class GuildGUI{
     public static Inventory openGuildGUI(ElementalGuild elementalGuild){
         Inventory inventory = Bukkit.createInventory(null, 45, ChatColor.BLACK + "GuildMenu");
         //display wood elemental

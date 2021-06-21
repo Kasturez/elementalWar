@@ -19,8 +19,8 @@ import java.util.List;
 public class ElementalKit implements CommandExecutor {
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] strings) {
-        if (label.equalsIgnoreCase("kits")) {
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        if (cmd.getName().equalsIgnoreCase("kits")) {
             if (!(sender instanceof Player)) {
                 sender.sendMessage("im out!");
                 return true;

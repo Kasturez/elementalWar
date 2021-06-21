@@ -7,7 +7,7 @@ import me.kasturez.elementalwar.eventHandlers.LandClaimEvent;
 import me.kasturez.elementalwar.eventHandlers.RegisterGuildPlayerEvent;
 import me.kasturez.elementalwar.guild.commands.GuildCMD;
 import me.kasturez.elementalwar.kits.ElementalKit;
-import me.kasturez.elementalwar.guild.commands.DamageEvent;
+import me.kasturez.elementalwar.events.DamageEvent;
 import me.kasturez.elementalwar.guild.commands.FlyCMD;
 import me.kasturez.elementalwar.scoreboard.HubScoreBoard;
 import org.bukkit.plugin.java.JavaPlugin;
