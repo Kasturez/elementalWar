@@ -45,7 +45,7 @@ public class GuildGUIEvent implements Listener {
 //                return;
             for (GuildPlayer guildPlayer1 : elementalGuild.getGuildPlayers()) {
                 guildPlayer1.getPlayer()
-                        .addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 1000, 0));
+                        .addPotionEffect(new PotionEffect(PotionEffectType.HEALTH_BOOST, 1000, 0));
             }
         }
 
