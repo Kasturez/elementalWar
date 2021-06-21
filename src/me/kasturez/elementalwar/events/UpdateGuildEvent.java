@@ -10,7 +10,7 @@ public class UpdateGuildEvent extends Event {
 
     private final Player player;
 
-    public UpdateGuildEvent(Player player) {
+    public UpdateGuildEvent(Player player){
         this.player = player;
     }
 
