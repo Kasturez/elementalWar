@@ -12,6 +12,6 @@ public class RegisterGuildPlayerEvent implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event){
         Player player = event.getPlayer();
         PlayerManager.registerPlayer(player);
-        player.sendMessage(PlayerManager.getGPlayer(player.getUniqueId()).toString());
+        player.sendMessage("Welcome to Elemental Guild");
     }
 }

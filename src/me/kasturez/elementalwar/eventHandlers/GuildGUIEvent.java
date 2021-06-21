@@ -35,32 +35,48 @@ public class GuildGUIEvent implements Listener {
 //                return;
             for (GuildPlayer guildPlayer1 : elementalGuild.getGuildPlayers()) {
                 guildPlayer1.getPlayer()
-                        .addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 1000, 1));
+                        .addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 1000, 0));
             }
         }
 
         //earth
         if (event.getSlot() == 12) {
-            if (elementalGuild.getEarth() < 100)
-                return;
+//            if (elementalGuild.getEarth() < 100)
+//                return;
+            for (GuildPlayer guildPlayer1 : elementalGuild.getGuildPlayers()) {
+                guildPlayer1.getPlayer()
+                        .addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 1000, 0));
+            }
         }
 
         //air
         if (event.getSlot() == 13) {
-            if (elementalGuild.getAir() < 100)
-                return;
+//            if (elementalGuild.getAir() < 100)
+//                return;
+            for (GuildPlayer guildPlayer1 : elementalGuild.getGuildPlayers()) {
+                guildPlayer1.getPlayer()
+                        .addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 1000, 0));
+            }
         }
 
         //fire
         if (event.getSlot() == 14) {
-            if (elementalGuild.getFire() < 100)
-                return;
+//            if (elementalGuild.getFire() < 100)
+//                return;
+            for (GuildPlayer guildPlayer1 : elementalGuild.getGuildPlayers()) {
+                guildPlayer1.getPlayer()
+                        .addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 1000, 0));
+            }
         }
 
         //ice
         if (event.getSlot() == 15) {
-            if (elementalGuild.getIce() < 100)
-                return;
+//            if (elementalGuild.getIce() < 100)
+//                return;
+            for (GuildPlayer guildPlayer1 : elementalGuild.getGuildPlayers()) {
+                guildPlayer1.getPlayer()
+                        .addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 1000, 0));
+            }
         }
 
     }
