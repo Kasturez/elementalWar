@@ -48,6 +48,14 @@ public class GuildCMD implements CommandExecutor {
                 return true;
             }
 
+            //guild create [blank]
+            if (!args[0].equalsIgnoreCase("create")) {
+                if (guildPlayer.getElementalGuildName().equalsIgnoreCase("wild")) {
+                    player.sendMessage("please do /guild create first!");
+                    return true;
+                }
+            }
+
             //guild info
             if(args[0].equalsIgnoreCase("info")){
                 player.sendMessage(GuildManager.getGuilds().toString());
@@ -60,15 +68,8 @@ public class GuildCMD implements CommandExecutor {
                 return true;
             }
 
-            //guild create [blank]
-            if (!args[0].equalsIgnoreCase("create")) {
-                if (guildPlayer.getElementalGuildName().equalsIgnoreCase("wild")) {
-                    player.sendMessage("please do /guild create first!");
-                    return true;
-                }
-            }
 
-            if (args[0].equalsIgnoreCase("info")) {
+            if (args[0].equalsIgnoreCase("elements")) {
                 player.openInventory(GuildGUI.openGuildGUI(GuildManager.findElementalGuildByName(guildPlayer.getElementalGuildName())));
             }
 
