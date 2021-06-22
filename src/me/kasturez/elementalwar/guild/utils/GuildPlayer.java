@@ -53,8 +53,4 @@ public class GuildPlayer {
     public void setBalance(double balance) {
         this.balance = balance;
     }
-
-    public void sendmsg(String msg){
-        player.sendMessage(msg);
-    }
 }

@@ -27,7 +27,7 @@ public class HubScoreBoard implements Listener {
         score3.setScore(3);
         Score score2 = objective.getScore(ChatColor.BLUE + "Your guild is: " + PlayerManager.getGPlayer(player.getUniqueId()).getElementalGuildName());
         score2.setScore(2);
-        Score score1 = objective.getScore(ChatColor.YELLOW + "Your Balance: " + PlayerManager.getGPlayer(player.getUniqueId()).getBalance());
+        Score score1 = objective.getScore(ChatColor.YELLOW + "Your Balance: $" + PlayerManager.getGPlayer(player.getUniqueId()).getBalance());
         score1.setScore(1);
         Score score0 = objective.getScore("Your chunk power ");
         score0.setScore(0);
