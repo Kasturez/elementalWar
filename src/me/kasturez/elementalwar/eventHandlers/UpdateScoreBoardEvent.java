@@ -4,7 +4,7 @@ import me.kasturez.elementalwar.events.UpdateGuildEvent;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
-public class UpdateScoreBoard implements Listener {
+public class UpdateScoreBoardEvent implements Listener {
     @EventHandler
     public void onUpdateGuild(UpdateGuildEvent event){
 

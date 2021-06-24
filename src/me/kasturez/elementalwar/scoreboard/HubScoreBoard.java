@@ -1,7 +1,7 @@
 package me.kasturez.elementalwar.scoreboard;
 
 import me.kasturez.elementalwar.events.UpdateGuildEvent;
-import me.kasturez.elementalwar.guild.utils.PlayerManager;
+import me.kasturez.elementalwar.guild.entities.PlayerManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;

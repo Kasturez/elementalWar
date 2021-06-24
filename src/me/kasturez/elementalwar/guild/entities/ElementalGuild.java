@@ -1,12 +1,13 @@
-package me.kasturez.elementalwar.guild.utils;
+package me.kasturez.elementalwar.guild.entities;
 
 import java.util.ArrayList;
 
 public class ElementalGuild {
 
-    private String name, desc;
+    private String name, desc, nexusCoordinate = "none";
+    private boolean nexusPlaced = false;
     private final ArrayList<GuildPlayer> guildPlayers = new ArrayList<>();
-    private int fire, ice, air, earth, wood;
+    private int fire, ice, air, earth, wood, guildLevel, guildPoint;
 
     public ElementalGuild(String name, String description) {
         this.name = name;
@@ -45,6 +46,22 @@ public class ElementalGuild {
 
     public void setDesc(String desc) {
         this.desc = desc;
+    }
+
+    public String getNexusCoordinate() {
+        return nexusCoordinate;
+    }
+
+    public void setNexusCoordinate(String nexusCoordinate) {
+        this.nexusCoordinate = nexusCoordinate;
+    }
+
+    public boolean isNexusPlaced() {
+        return nexusPlaced;
+    }
+
+    public void setNexusPlaced(boolean nexusPlaced) {
+        this.nexusPlaced = nexusPlaced;
     }
 
     public ArrayList<GuildPlayer> getGuildPlayers() {
@@ -89,5 +106,21 @@ public class ElementalGuild {
 
     public void setWood(int wood) {
         this.wood = wood;
+    }
+
+    public int getGuildLevel() {
+        return guildLevel;
+    }
+
+    public void setGuildLevel(int guildLevel) {
+        this.guildLevel = guildLevel;
+    }
+
+    public int getGuildPoint() {
+        return guildPoint;
+    }
+
+    public void setGuildPoint(int guildPoint) {
+        this.guildPoint = guildPoint;
     }
 }

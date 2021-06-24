@@ -11,4 +11,5 @@ commands:
     aliases:
       - g
   fly:
+    usages: "do /fly to enable fly"
 

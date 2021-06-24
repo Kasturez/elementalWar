@@ -1,4 +1,4 @@
-package me.kasturez.elementalwar.guild.utils;
+package me.kasturez.elementalwar.guild.entities;
 
 public enum GuildRanks {
 

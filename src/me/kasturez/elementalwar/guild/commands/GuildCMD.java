@@ -2,13 +2,19 @@ package me.kasturez.elementalwar.guild.commands;
 
 import me.kasturez.elementalwar.GUI.GuildGUI;
 import me.kasturez.elementalwar.events.UpdateGuildEvent;
+import me.kasturez.elementalwar.guild.elementalEssence.ElementalEssence;
 import me.kasturez.elementalwar.guild.landClaim.LandClaim;
-import me.kasturez.elementalwar.guild.utils.*;
+import me.kasturez.elementalwar.guild.entities.*;
+import net.minecraft.server.v1_16_R3.BlockBeacon;
+import net.minecraft.server.v1_16_R3.WorldServer;
 import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
+import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.craftbukkit.v1_16_R3.CraftWorld;
 import org.bukkit.entity.Player;
 
 import java.util.UUID;
@@ -58,7 +64,7 @@ public class GuildCMD implements CommandExecutor {
 
             //guild info
             if(args[0].equalsIgnoreCase("info")){
-                player.sendMessage(GuildManager.getGuilds().toString());
+                player.sendMessage(elementalGuild.toString());
                 Bukkit.getPluginManager().callEvent(updateGuildEvent);
                 return true;
             }
@@ -70,7 +76,7 @@ public class GuildCMD implements CommandExecutor {
 
 
             if (args[0].equalsIgnoreCase("elements")) {
-                player.openInventory(GuildGUI.openGuildGUI(GuildManager.findElementalGuildByName(guildPlayer.getElementalGuildName())));
+                player.openInventory(GuildGUI.openGuildGUI(elementalGuild));
             }
 
             if (args[0].equalsIgnoreCase("promote")) {
@@ -101,13 +107,13 @@ public class GuildCMD implements CommandExecutor {
                     player.sendMessage("can't find this player");
                     return true;
                 }
-                GuildPlayer guildPlayerBeingPromote = PlayerManager.getGPlayer(player1.getUniqueId());
-                if (!(guildPlayerBeingPromote.getElementalGuildName().equalsIgnoreCase(guildPlayer.getElementalGuildName()))) {
+                GuildPlayer guildPlayerBeingDemote = PlayerManager.getGPlayer(player1.getUniqueId());
+                if (!(guildPlayerBeingDemote.getElementalGuildName().equalsIgnoreCase(guildPlayer.getElementalGuildName()))) {
                     player.sendMessage("you can only demote player from your guild");
                     return true;
                 }
-                if (guildPlayerBeingPromote.getGuildRanks() == GuildRanks.MEMBER) {
-                    guildPlayerBeingPromote.setGuildRanks(GuildRanks.RECRUIT);
+                if (guildPlayerBeingDemote.getGuildRanks() == GuildRanks.MEMBER) {
+                    guildPlayerBeingDemote.setGuildRanks(GuildRanks.RECRUIT);
                     player.sendMessage("demote successfully");
                     Bukkit.getPluginManager().callEvent(updateGuildEvent);
                     return true;
@@ -141,12 +147,17 @@ public class GuildCMD implements CommandExecutor {
                 return true;
             }
 
+            if (args[0].equalsIgnoreCase("nexus")) {
+                elementalGuild.setNexusPlaced(false);
+                player.sendMessage("you can now set a new nexus");
+            }
+
             //guild invite [player]
             if (args[0].equalsIgnoreCase("invite")) {
                 Player invitedPlayer = Bukkit.getPlayer(args[1]);
                 GuildPlayer invitedGPlayer = PlayerManager.getGPlayer(invitedPlayer.getUniqueId());
                 sender.sendMessage("You've invited " + invitedPlayer + "to ur guild");
-                invitedPlayer.sendMessage("U'r being invited to ");
+                invitedPlayer.sendMessage("U'r being invited to: " + guildPlayer.getElementalGuildName());
                 Bukkit.getPluginManager().callEvent(updateGuildEvent);
                 return true;
             }
@@ -181,6 +192,13 @@ public class GuildCMD implements CommandExecutor {
                 Bukkit.getPluginManager().callEvent(updateGuildEvent);
                 LandClaim.removeChunkByKey(chunkID);
                 return true;
+            }
+            if (args[0].equalsIgnoreCase("test")){
+                player.getInventory().addItem(ElementalEssence.woodEssence);
+                player.getInventory().addItem(ElementalEssence.fireEssence);
+                player.getInventory().addItem(ElementalEssence.iceEssence);
+                player.getInventory().addItem(ElementalEssence.earthEssence);
+                player.getInventory().addItem(ElementalEssence.airEssence);
             }
 
             //guild leave

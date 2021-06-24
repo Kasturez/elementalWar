@@ -1,11 +1,9 @@
 package me.kasturez.elementalwar;
 
 
-import me.kasturez.elementalwar.eventHandlers.GuildGUIEvent;
-import me.kasturez.elementalwar.eventHandlers.KitEvent;
-import me.kasturez.elementalwar.eventHandlers.LandClaimEvent;
-import me.kasturez.elementalwar.eventHandlers.RegisterGuildPlayerEvent;
+import me.kasturez.elementalwar.eventHandlers.*;
 import me.kasturez.elementalwar.guild.commands.GuildCMD;
+import me.kasturez.elementalwar.guild.elementalEssence.ElementalEssence;
 import me.kasturez.elementalwar.kits.ElementalKit;
 import me.kasturez.elementalwar.guild.commands.DamageEvent;
 import me.kasturez.elementalwar.guild.commands.FlyCMD;
@@ -17,6 +15,7 @@ public class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        ElementalEssence.initElementalDrops();
         getCommand("kits").setExecutor(new ElementalKit());
         getCommand("guild").setExecutor(new GuildCMD());
         getCommand("fly").setExecutor(new FlyCMD());
@@ -26,6 +25,8 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new DamageEvent(), this);
         getServer().getPluginManager().registerEvents(new HubScoreBoard(),this);
         getServer().getPluginManager().registerEvents(new RegisterGuildPlayerEvent(), this);
+        getServer().getPluginManager().registerEvents(new InteractGuildNexusEvent(), this);
+        getServer().getPluginManager().registerEvents(new PlacingNexusEvent(), this);
     }
 
     @Override

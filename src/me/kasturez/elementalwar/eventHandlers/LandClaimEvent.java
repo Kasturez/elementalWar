@@ -1,7 +1,7 @@
 package me.kasturez.elementalwar.eventHandlers;
 
 import me.kasturez.elementalwar.guild.landClaim.LandClaim;
-import me.kasturez.elementalwar.guild.utils.PlayerManager;
+import me.kasturez.elementalwar.guild.entities.PlayerManager;
 import org.bukkit.Chunk;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

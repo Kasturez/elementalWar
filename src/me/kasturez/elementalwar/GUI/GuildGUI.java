@@ -1,6 +1,6 @@
 package me.kasturez.elementalwar.GUI;
 
-import me.kasturez.elementalwar.guild.utils.ElementalGuild;
+import me.kasturez.elementalwar.guild.entities.ElementalGuild;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
