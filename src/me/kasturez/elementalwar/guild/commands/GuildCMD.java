@@ -5,6 +5,7 @@ import me.kasturez.elementalwar.events.UpdateGuildEvent;
 import me.kasturez.elementalwar.guild.elementalEssence.ElementalEssence;
 import me.kasturez.elementalwar.guild.landClaim.LandClaim;
 import me.kasturez.elementalwar.guild.entities.*;
+import me.kasturez.elementalwar.skull.ZombieSkull;
 import net.minecraft.server.v1_16_R3.BlockBeacon;
 import net.minecraft.server.v1_16_R3.WorldServer;
 import org.bukkit.Bukkit;
@@ -150,6 +151,7 @@ public class GuildCMD implements CommandExecutor {
             if (args[0].equalsIgnoreCase("nexus")) {
                 elementalGuild.setNexusPlaced(false);
                 player.sendMessage("you can now set a new nexus");
+                return true;
             }
 
             //guild invite [player]
@@ -193,12 +195,20 @@ public class GuildCMD implements CommandExecutor {
                 LandClaim.removeChunkByKey(chunkID);
                 return true;
             }
+
+            if (args[0].equalsIgnoreCase("test1")){
+                ZombieSkull.createZombieSkull();
+                player.getInventory().addItem(ZombieSkull.zombieSkull);
+                return true;
+            }
+
             if (args[0].equalsIgnoreCase("test")){
                 player.getInventory().addItem(ElementalEssence.woodEssence);
                 player.getInventory().addItem(ElementalEssence.fireEssence);
                 player.getInventory().addItem(ElementalEssence.iceEssence);
                 player.getInventory().addItem(ElementalEssence.earthEssence);
                 player.getInventory().addItem(ElementalEssence.airEssence);
+                return true;
             }
 
             //guild leave
@@ -226,6 +236,7 @@ public class GuildCMD implements CommandExecutor {
                 }
                 GuildManager.findElementalGuildByName(guildPlayerBeingKick.getElementalGuildName()).removePlayer(guildPlayerBeingKick);
                 Bukkit.getPluginManager().callEvent(updateGuildEvent);
+                return true;
             }
 
             //guild disband
