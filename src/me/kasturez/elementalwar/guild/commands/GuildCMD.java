@@ -1,6 +1,7 @@
 package me.kasturez.elementalwar.guild.commands;
 
 import me.kasturez.elementalwar.GUI.GuildGUI;
+import me.kasturez.elementalwar.events.RaiderUnclaimEvent;
 import me.kasturez.elementalwar.events.UpdateGuildEvent;
 import me.kasturez.elementalwar.guild.elementalEssence.ElementalEssence;
 import me.kasturez.elementalwar.guild.landClaim.LandClaim;
@@ -164,6 +165,13 @@ public class GuildCMD implements CommandExecutor {
                 return true;
             }
 
+            if (args[0].equalsIgnoreCase("test2")){
+                RaiderEntity raiderEntity = new RaiderEntity(player.getLocation());
+                WorldServer worldServer = ((CraftWorld) player.getWorld()).getHandle();
+                worldServer.addEntity(raiderEntity);
+                RaiderUnclaimEvent raiderUnclaimEvent = new RaiderUnclaimEvent(raiderEntity);
+                Bukkit.getPluginManager().callEvent(raiderUnclaimEvent);
+            }
 
             //guild claim
             if (args[0].equalsIgnoreCase("claim")) {

@@ -27,6 +27,7 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new RegisterGuildPlayerEvent(), this);
         getServer().getPluginManager().registerEvents(new InteractGuildNexusEvent(), this);
         getServer().getPluginManager().registerEvents(new PlacingNexusEvent(), this);
+        getServer().getPluginManager().registerEvents(new RaiderUnclaimEventHandler(this), this);
     }
 
     @Override

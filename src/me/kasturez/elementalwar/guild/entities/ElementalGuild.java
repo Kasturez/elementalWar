@@ -14,10 +14,10 @@ public class ElementalGuild {
         this.desc = description;
     }
 
-    public void addPlayer(GuildPlayer guildPlayer, GuildRanks guildRanks, String elementalGuildName){
+    public void addPlayer(GuildPlayer guildPlayer, GuildRanks guildRanks){
         guildPlayers.add(guildPlayer);
         guildPlayer.setGuildRanks(guildRanks);
-        guildPlayer.setElementalGuildName(elementalGuildName);
+        guildPlayer.setElementalGuildName(this.name);
     }
 
     public void removePlayer(GuildPlayer guildPlayer){

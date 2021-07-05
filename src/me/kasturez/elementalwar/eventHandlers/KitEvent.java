@@ -370,7 +370,7 @@ public class KitEvent implements Listener {
         ItemStack item = new ItemStack(Material.DIAMOND_SWORD);
         ItemMeta meta = item.getItemMeta();
         assert meta != null;
-        meta.setDisplayName(ChatColor.DARK_RED + "MT_Warlord's Excalibur");
+        meta.setDisplayName(ChatColor.DARK_RED + "Mid Warlord Excalibur");
         meta.addEnchant(Enchantment.DAMAGE_ALL, 9, true);
         item.setItemMeta(meta);
         inv.setItem(0, item);
@@ -378,27 +378,27 @@ public class KitEvent implements Listener {
 
         item.setType(Material.DIAMOND_HELMET);
         meta = item.getItemMeta();
-        meta.setDisplayName(ChatColor.DARK_RED + "LT_Warlord's Cap");
+        meta.setDisplayName(ChatColor.DARK_RED + "Mid Warlord Cap");
         meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 9, true);
         item.setItemMeta(meta);
         inv.setItem(1, item);
 
         item.setType(Material.DIAMOND_CHESTPLATE);
         meta = item.getItemMeta();
-        meta.setDisplayName(ChatColor.DARK_RED + "LT_Warlord's Tunic");
+        meta.setDisplayName(ChatColor.DARK_RED + "Mid Warlord Chestplate");
         item.setItemMeta(meta);
         inv.setItem(2, item);
 
         item.setType(Material.DIAMOND_LEGGINGS);
         meta = item.getItemMeta();
-        meta.setDisplayName(ChatColor.DARK_RED + "LT_Warlord's Legging");
+        meta.setDisplayName(ChatColor.DARK_RED + "Mid Warlord Legging");
         item.setItemMeta(meta);
         inv.setItem(3, item);
         item.removeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL);
 
         item.setType(Material.DIAMOND_BOOTS);
         meta = item.getItemMeta();
-        meta.setDisplayName(ChatColor.DARK_RED + "LT_Warlord's Boot");
+        meta.setDisplayName(ChatColor.DARK_RED + "Mid Warlord Boot");
         meta.addEnchant(Enchantment.PROTECTION_FALL, 4, true);
         item.setItemMeta(meta);
         inv.setItem(4, item);
@@ -413,7 +413,7 @@ public class KitEvent implements Listener {
         ItemStack item = new ItemStack(Material.DIAMOND_SWORD);
         ItemMeta meta = item.getItemMeta();
         assert meta != null;
-        meta.setDisplayName(ChatColor.DARK_RED + "LT_Warlord's Excalibur");
+        meta.setDisplayName(ChatColor.DARK_RED + "Top Warlord Excalibur");
         meta.addEnchant(Enchantment.DAMAGE_ALL, 10, true);
         item.setItemMeta(meta);
         inv.setItem(0, item);
@@ -421,27 +421,27 @@ public class KitEvent implements Listener {
 
         item.setType(Material.DIAMOND_HELMET);
         meta = item.getItemMeta();
-        meta.setDisplayName(ChatColor.DARK_RED + "TT_Warlord's Cap");
+        meta.setDisplayName(ChatColor.DARK_RED + "Top Warlord Cap");
         meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 10, true);
         item.setItemMeta(meta);
         inv.setItem(1, item);
 
         item.setType(Material.DIAMOND_CHESTPLATE);
         meta = item.getItemMeta();
-        meta.setDisplayName(ChatColor.DARK_RED + "TT_Warlord's Tunic");
+        meta.setDisplayName(ChatColor.DARK_RED + "Top Warlord Tunic");
         item.setItemMeta(meta);
         inv.setItem(2, item);
 
         item.setType(Material.DIAMOND_LEGGINGS);
         meta = item.getItemMeta();
-        meta.setDisplayName(ChatColor.DARK_RED + "TT_Warlord's Legging");
+        meta.setDisplayName(ChatColor.DARK_RED + "Top Warlord Legging");
         item.setItemMeta(meta);
         inv.setItem(3, item);
         item.removeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL);
 
         item.setType(Material.DIAMOND_BOOTS);
         meta = item.getItemMeta();
-        meta.setDisplayName(ChatColor.DARK_RED + "TT_Warlord's Boot");
+        meta.setDisplayName(ChatColor.DARK_RED + "Top Warlord Boot");
         meta.addEnchant(Enchantment.PROTECTION_FALL, 4, true);
         item.setItemMeta(meta);
         inv.setItem(4, item);
@@ -475,70 +475,80 @@ public class KitEvent implements Listener {
         if (event.getSlot() == 1) {
             player.closeInventory();
             player.updateInventory();
-            for (ItemStack item : initTravelerKits().getContents()) {
+            Inventory inventory = initTravelerKits();
+            for (ItemStack item : inventory.getContents()) {
                 player.getInventory().addItem(item);
             }
         }
         if (event.getSlot() == 2) {
             player.closeInventory();
             player.updateInventory();
-            for (ItemStack item : initLowSoldierKit().getContents()) {
+            Inventory inventory = initLowSoldierKit();
+            for (ItemStack item : inventory.getContents()) {
                 player.getInventory().addItem(item);
             }
         }
         if (event.getSlot() == 3) {
             player.closeInventory();
             player.updateInventory();
-            for (ItemStack item : initMidSoldierKit().getContents()) {
+            Inventory inventory = initMidSoldierKit();
+            for (ItemStack item : inventory.getContents()) {
                 player.getInventory().addItem(item);
             }
         }
         if (event.getSlot() == 4) {
             player.closeInventory();
             player.updateInventory();
-            for (ItemStack item : initTopSoldierKit().getContents()) {
+            Inventory inventory = initTopSoldierKit();
+            for (ItemStack item : inventory.getContents()) {
                 player.getInventory().addItem(item);
             }
         }
         if (event.getSlot() == 5) {
             player.closeInventory();
             player.updateInventory();
-            for (ItemStack item : initLowWarriorKit().getContents()) {
+            Inventory inventory = initLowWarriorKit();
+            for (ItemStack item : inventory.getContents()) {
                 player.getInventory().addItem(item);
             }
         }
         if (event.getSlot() == 6) {
             player.closeInventory();
             player.updateInventory();
-            for (ItemStack item : initMidWarriorKit().getContents()) {
+            Inventory inventory = initMidWarriorKit();
+            for (ItemStack item : inventory.getContents()) {
                 player.getInventory().addItem(item);
             }
         }
         if (event.getSlot() == 7) {
             player.closeInventory();
             player.updateInventory();
-            for (ItemStack item : initTopWarriorKit().getContents()) {
+            Inventory inventory = initTopWarriorKit();
+            for (ItemStack item : inventory.getContents()) {
                 player.getInventory().addItem(item);
             }
         }
         if (event.getSlot() == 8) {
             player.closeInventory();
             player.updateInventory();
-            for (ItemStack item : initLowWarlordKit().getContents()) {
+            Inventory inventory = initLowWarlordKit();
+            for (ItemStack item : inventory.getContents()) {
                 player.getInventory().addItem(item);
             }
         }
         if (event.getSlot() == 9) {
             player.closeInventory();
             player.updateInventory();
-            for (ItemStack item : initMidWarlordKit().getContents()) {
+            Inventory inventory = initMidWarlordKit();
+            for (ItemStack item : inventory.getContents()) {
                 player.getInventory().addItem(item);
             }
         }
         if (event.getSlot() == 10) {
             player.closeInventory();
             player.updateInventory();
-            for (ItemStack item : initTopWarlordKit().getContents()) {
+            Inventory inventory = initTopWarlordKit();
+            for (ItemStack item : inventory.getContents()) {
                 player.getInventory().addItem(item);
             }
         }
