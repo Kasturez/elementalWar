@@ -16,9 +16,13 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         ElementalEssence.initElementalDrops();
+
+
         getCommand("kits").setExecutor(new ElementalKit());
         getCommand("guild").setExecutor(new GuildCMD());
         getCommand("fly").setExecutor(new FlyCMD());
+
+
         getServer().getPluginManager().registerEvents(new GuildGUIEvent(), this);
         getServer().getPluginManager().registerEvents(new KitEvent(), this);
         getServer().getPluginManager().registerEvents(new LandClaimEvent(), this);
@@ -28,6 +32,8 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new InteractGuildNexusEvent(), this);
         getServer().getPluginManager().registerEvents(new PlacingNexusEvent(), this);
         getServer().getPluginManager().registerEvents(new RaiderUnclaimEventHandler(this), this);
+        
+
     }
 
     @Override

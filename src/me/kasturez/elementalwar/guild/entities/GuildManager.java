@@ -8,7 +8,7 @@ public class GuildManager{
 
     public static void createGuild(String guildName, GuildPlayer guildPlayer){
         ElementalGuild guild = new ElementalGuild(guildName, "Nothing");
-        guild.addPlayer(guildPlayer, GuildRanks.ADMIN, guildName);
+        guild.addPlayer(guildPlayer, GuildRanks.ADMIN);
         guilds.add(guild);
     }
 
