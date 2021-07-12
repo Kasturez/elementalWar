@@ -142,7 +142,7 @@ public class GuildCMD implements CommandExecutor {
                     player.sendMessage("that name already exist");
                     return true;
                 }
-                GuildManager.createGuild(args[1], guildPlayer);
+                GuildManager.createGuild(args[1], player);
                 PlayerManager.getGPlayer(uuid).setElementalGuildName(args[1]);
                 sender.sendMessage("created guild with name: " + args[1]);
                 Bukkit.getPluginManager().callEvent(updateGuildEvent);
@@ -225,7 +225,7 @@ public class GuildCMD implements CommandExecutor {
                     player.sendMessage("You cant leave your guild as the admin");
                     return true;
                 }
-                GuildManager.findElementalGuildByName(guildPlayer.getElementalGuildName()).removePlayer(guildPlayer);
+                GuildManager.findElementalGuildByName(guildPlayer.getElementalGuildName()).removePlayer(player);
                 player.sendMessage("You've just left this guild");
                 Bukkit.getPluginManager().callEvent(updateGuildEvent);
             }
@@ -242,7 +242,7 @@ public class GuildCMD implements CommandExecutor {
                     player.sendMessage("that player isn't in your guild");
                     return true;
                 }
-                GuildManager.findElementalGuildByName(guildPlayerBeingKick.getElementalGuildName()).removePlayer(guildPlayerBeingKick);
+                GuildManager.findElementalGuildByName(guildPlayerBeingKick.getElementalGuildName()).removePlayer(player1);
                 Bukkit.getPluginManager().callEvent(updateGuildEvent);
                 return true;
             }

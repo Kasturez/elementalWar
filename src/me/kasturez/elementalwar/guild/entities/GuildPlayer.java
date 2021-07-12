@@ -1,31 +1,23 @@
 package me.kasturez.elementalwar.guild.entities;
 
-import org.bukkit.entity.Player;
 
 public class GuildPlayer {
 
-    private Player player;
-
-    private GuildRanks guildRanks;
+    private GuildRanks guildRanks = GuildRanks.RECRUIT;
 
     private String elementalGuildName = "wild";
 
-    public GuildPlayer(Player player) {
-        this.player = player;
+    public GuildPlayer() {
+    }
+
+    public GuildPlayer(GuildRanks guildRanks, String elementalGuildName) {
+        this.guildRanks = guildRanks;
+        this.elementalGuildName = elementalGuildName;
     }
 
     @Override
     public String toString() {
         return "elementalGuildName='" + elementalGuildName + '\'' + '}';
-    }
-
-    //get set Player
-    public Player getPlayer() {
-        return player;
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
     }
 
     //get set GuildRanks

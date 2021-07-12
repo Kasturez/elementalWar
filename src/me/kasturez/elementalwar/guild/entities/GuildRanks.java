@@ -4,13 +4,13 @@ public enum GuildRanks {
 
     RECRUIT("Recruit"), MEMBER("Member"), ADMIN("Admin");
 
-    private String name;
+    private final String name;
 
     GuildRanks(String name){
         this.name = name;
     }
 
-    public String getName(String name){
+    public String getName() {
         return name;
     }
 }

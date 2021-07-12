@@ -1,6 +1,7 @@
 package me.kasturez.elementalwar.eventHandlers;
 
 import me.kasturez.elementalwar.guild.entities.*;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -9,6 +10,8 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+
+import java.util.UUID;
 
 public class GuildGUIEvent implements Listener {
     @EventHandler
@@ -34,9 +37,8 @@ public class GuildGUIEvent implements Listener {
                 player.sendMessage("you need 100 elemental point to activate a buff");
                 return;
             }
-            for (GuildPlayer guildPlayer1 : elementalGuild.getGuildPlayers()) {
-                guildPlayer1.getPlayer()
-                        .addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 1000000, 0));
+            for (UUID uuid : elementalGuild.getGuildPlayers()) {
+                Bukkit.getPlayer(uuid).addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 1000000, 0));
             }
             elementalGuild.setWood(elementalGuild.getWood() - 100);
         }
@@ -47,9 +49,8 @@ public class GuildGUIEvent implements Listener {
                 player.sendMessage("you need 100 elemental point to activate a buff");
                 return;
             }
-            for (GuildPlayer guildPlayer1 : elementalGuild.getGuildPlayers()) {
-                guildPlayer1.getPlayer()
-                        .addPotionEffect(new PotionEffect(PotionEffectType.HEALTH_BOOST, 1000000, 0));
+            for (UUID uuid : elementalGuild.getGuildPlayers()) {
+                Bukkit.getPlayer(uuid).addPotionEffect(new PotionEffect(PotionEffectType.HEALTH_BOOST, 1000000, 0));
             }
             elementalGuild.setEarth(elementalGuild.getEarth() - 100);
         }
@@ -60,9 +61,8 @@ public class GuildGUIEvent implements Listener {
                 player.sendMessage("you need 100 elemental point to activate a buff");
                 return;
             }
-            for (GuildPlayer guildPlayer1 : elementalGuild.getGuildPlayers()) {
-                guildPlayer1.getPlayer()
-                        .addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 1000000, 0));
+            for (UUID uuid : elementalGuild.getGuildPlayers()) {
+                Bukkit.getPlayer(uuid).addPotionEffect(new PotionEffect(PotionEffectType.HEALTH_BOOST, 1000000, 0));
             }
             elementalGuild.setAir(elementalGuild.getAir() - 100);
         }
@@ -73,9 +73,8 @@ public class GuildGUIEvent implements Listener {
                 player.sendMessage("you need 100 elemental point to activate a buff");
                 return;
             }
-            for (GuildPlayer guildPlayer1 : elementalGuild.getGuildPlayers()) {
-                guildPlayer1.getPlayer()
-                        .addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 1000000, 0));
+            for (UUID uuid : elementalGuild.getGuildPlayers()) {
+                Bukkit.getPlayer(uuid).addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 1000000, 0));
             }
             elementalGuild.setFire(elementalGuild.getFire() - 100);
         }
@@ -86,9 +85,8 @@ public class GuildGUIEvent implements Listener {
                 player.sendMessage("you need 100 elemental point to activate a buff");
                 return;
             }
-            for (GuildPlayer guildPlayer1 : elementalGuild.getGuildPlayers()) {
-                guildPlayer1.getPlayer()
-                        .addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 1000000, 0));
+            for (UUID uuid : elementalGuild.getGuildPlayers()) {
+                Bukkit.getPlayer(uuid).addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 1000000, 0));
             }
             elementalGuild.setIce(elementalGuild.getIce() - 100);
         }

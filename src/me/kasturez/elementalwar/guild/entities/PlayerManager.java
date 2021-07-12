@@ -10,10 +10,18 @@ public class PlayerManager {
 
     public static void registerPlayer(Player player) {
         if (playersHashMap.containsKey(player.getUniqueId())) return;
-        playersHashMap.put(player.getUniqueId(), new GuildPlayer(player));
+        playersHashMap.put(player.getUniqueId(), new GuildPlayer());
+    }
+
+    public static void restoreHashMap(UUID uuid, GuildPlayer guildPlayer){
+        playersHashMap.put(uuid, guildPlayer);
     }
 
     public static GuildPlayer getGPlayer(UUID uuid){
         return playersHashMap.get(uuid);
+    }
+
+    public static HashMap<UUID, GuildPlayer> getPlayersHashMap() {
+        return playersHashMap;
     }
 }

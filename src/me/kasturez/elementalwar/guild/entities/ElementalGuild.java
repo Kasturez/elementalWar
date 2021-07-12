@@ -1,12 +1,15 @@
 package me.kasturez.elementalwar.guild.entities;
 
+import org.bukkit.entity.Player;
+
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class ElementalGuild {
 
     private String name, desc, nexusCoordinate = "none";
     private boolean nexusPlaced = false;
-    private final ArrayList<GuildPlayer> guildPlayers = new ArrayList<>();
+    private final ArrayList<UUID> guildPlayers = new ArrayList<>();
     private int fire, ice, air, earth, wood, guildLevel, guildPoint;
 
     public ElementalGuild(String name, String description) {
@@ -14,15 +17,16 @@ public class ElementalGuild {
         this.desc = description;
     }
 
-    public void addPlayer(GuildPlayer guildPlayer, GuildRanks guildRanks){
-        guildPlayers.add(guildPlayer);
+    public void addPlayer(Player player, GuildRanks guildRanks){
+        guildPlayers.add(player.getUniqueId());
+        GuildPlayer guildPlayer = PlayerManager.getGPlayer(player.getUniqueId());
         guildPlayer.setGuildRanks(guildRanks);
         guildPlayer.setElementalGuildName(this.name);
     }
 
-    public void removePlayer(GuildPlayer guildPlayer){
-        guildPlayers.remove(guildPlayer);
-        guildPlayer.setElementalGuildName("wild");
+    public void removePlayer(Player player){
+        guildPlayers.remove(player.getUniqueId());
+        PlayerManager.getGPlayer(player.getUniqueId()).setElementalGuildName("wild");
     }
 
     @Override
@@ -64,7 +68,7 @@ public class ElementalGuild {
         this.nexusPlaced = nexusPlaced;
     }
 
-    public ArrayList<GuildPlayer> getGuildPlayers() {
+    public ArrayList<UUID> getGuildPlayers() {
         return guildPlayers;
     }
 

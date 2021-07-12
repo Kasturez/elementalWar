@@ -1,14 +1,16 @@
 package me.kasturez.elementalwar.guild.entities;
 
+import org.bukkit.entity.Player;
+
 import java.util.ArrayList;
 
 public class GuildManager{
 
     private static final ArrayList<ElementalGuild> guilds = new ArrayList();
 
-    public static void createGuild(String guildName, GuildPlayer guildPlayer){
+    public static void createGuild(String guildName, Player player){
         ElementalGuild guild = new ElementalGuild(guildName, "Nothing");
-        guild.addPlayer(guildPlayer, GuildRanks.ADMIN);
+        guild.addPlayer(player, GuildRanks.ADMIN);
         guilds.add(guild);
     }
 
